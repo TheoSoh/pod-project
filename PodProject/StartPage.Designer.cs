@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            menuPanel = new Panel();
             header = new Label();
-            btnLibrary = new Button();
-            btnAddPod = new Button();
+            menuPanel = new Panel();
             btnManageCategories = new Button();
+            btnAddPod = new Button();
+            btnLibrary = new Button();
             pagePanel = new Panel();
             panel1.SuspendLayout();
             menuPanel.SuspendLayout();
@@ -49,6 +49,17 @@
             panel1.Size = new Size(1171, 100);
             panel1.TabIndex = 0;
             // 
+            // header
+            // 
+            header.Anchor = AnchorStyles.Top;
+            header.AutoSize = true;
+            header.Font = new Font("Segoe UI", 28.25F, FontStyle.Regular, GraphicsUnit.Point);
+            header.Location = new Point(505, 19);
+            header.Name = "header";
+            header.Size = new Size(135, 51);
+            header.TabIndex = 0;
+            header.Text = "PodLib";
+            // 
             // menuPanel
             // 
             menuPanel.BackColor = SystemColors.AppWorkspace;
@@ -61,26 +72,15 @@
             menuPanel.Size = new Size(140, 541);
             menuPanel.TabIndex = 1;
             // 
-            // header
+            // btnManageCategories
             // 
-            header.Anchor = AnchorStyles.Top;
-            header.AutoSize = true;
-            header.Font = new Font("Sans Serif Collection", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            header.Location = new Point(505, 19);
-            header.Name = "header";
-            header.Size = new Size(174, 67);
-            header.TabIndex = 0;
-            header.Text = "PodLib";
-            // 
-            // btnLibrary
-            // 
-            btnLibrary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLibrary.Location = new Point(10, 6);
-            btnLibrary.Name = "btnLibrary";
-            btnLibrary.Size = new Size(120, 60);
-            btnLibrary.TabIndex = 0;
-            btnLibrary.Text = "Mina poddar";
-            btnLibrary.UseVisualStyleBackColor = true;
+            btnManageCategories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnManageCategories.Location = new Point(10, 138);
+            btnManageCategories.Name = "btnManageCategories";
+            btnManageCategories.Size = new Size(120, 60);
+            btnManageCategories.TabIndex = 2;
+            btnManageCategories.Text = "Hantera kategorier";
+            btnManageCategories.UseVisualStyleBackColor = true;
             // 
             // btnAddPod
             // 
@@ -92,15 +92,15 @@
             btnAddPod.Text = "Lägg till pod";
             btnAddPod.UseVisualStyleBackColor = true;
             // 
-            // btnManageCategories
+            // btnLibrary
             // 
-            btnManageCategories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnManageCategories.Location = new Point(10, 138);
-            btnManageCategories.Name = "btnManageCategories";
-            btnManageCategories.Size = new Size(120, 60);
-            btnManageCategories.TabIndex = 2;
-            btnManageCategories.Text = "Hantera kategorier";
-            btnManageCategories.UseVisualStyleBackColor = true;
+            btnLibrary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLibrary.Location = new Point(10, 6);
+            btnLibrary.Name = "btnLibrary";
+            btnLibrary.Size = new Size(120, 60);
+            btnLibrary.TabIndex = 0;
+            btnLibrary.Text = "Mina poddar";
+            btnLibrary.UseVisualStyleBackColor = true;
             // 
             // pagePanel
             // 
