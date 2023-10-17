@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Pod
+    public class Pod
     {
+        public double AmountOfEpisodes {  get; set; }
+        public string Title{ get; set; }
+        public string Category{ get; set; }   
+        public string FileName { get; }
     }
 }
