@@ -39,6 +39,7 @@
             btnChangeNameCat = new Button();
             btnDeleteCategory = new Button();
             btnAddCategory = new Button();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -141,12 +142,22 @@
             btnAddCategory.Text = "Lägg till";
             btnAddCategory.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(993, 67);
+            label6.Name = "label6";
+            label6.Size = new Size(50, 32);
+            label6.TabIndex = 11;
+            label6.Text = "Hej";
+            // 
             // AddCategory
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1163, 642);
+            Controls.Add(label6);
             Controls.Add(btnAddCategory);
             Controls.Add(btnDeleteCategory);
             Controls.Add(btnChangeNameCat);
@@ -177,5 +188,6 @@
         private Button btnChangeNameCat;
         private Button btnDeleteCategory;
         private Button btnAddCategory;
+        private Label label6;
     }
 }
