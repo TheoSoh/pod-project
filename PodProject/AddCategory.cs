@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PodProject
 {
-    public partial class AddPodPage : Form
+    public partial class AddCategory : Form
     {
-        public AddPodPage()
+        public AddCategory()
         {
             InitializeComponent();
-        }
-
-        private void AddPodPage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
