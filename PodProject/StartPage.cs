@@ -33,5 +33,10 @@ namespace PodProject
             childForm.BringToFront();
             childForm.Show();
         }
+
+        private void btnAddPod_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AddPodPage(), sender);
+        }
     }
 }

@@ -130,6 +130,7 @@
             btnAdd.TabIndex = 9;
             btnAdd.Text = "Lägg till";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // AddPodPage
             // 
