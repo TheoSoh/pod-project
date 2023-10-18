@@ -15,9 +15,9 @@ namespace DAL
 
         public void Serialize(List<T> list)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
             try
             {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
                 using (FileStream xmlOut = new FileStream("", FileMode.Append, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(xmlOut, list);
@@ -31,9 +31,9 @@ namespace DAL
         public List<T> Deserialize()
         {
             List<T> list = new List<T>();
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
             try
             {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
                 using (FileStream xmlIn = new FileStream("", FileMode.Append, FileAccess.Read))
                 {
                     list = (List<T>)xmlSerializer.Deserialize(xmlIn);
