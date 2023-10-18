@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    [Serializable]
     public class Pod
     {
 
-        public Pod(double amoutOfEpisodes, string title, string category, string fileName)
+        public Pod(string title,string url)
         {
 
-
-            AmoutOfEpisodes = amoutOfEpisodes;
             Title = title;
-            Category = category;
-            FileName = fileName;
+            FileName = url;
+            
+        }
+
+        public Pod()
+        {
+
         }
 
     

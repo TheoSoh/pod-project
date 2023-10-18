@@ -9,6 +9,10 @@ namespace DAL.Repository
     public interface IRepository<T> where T : class
     {
         List<T> GetAll();
+
+       
+
+        void Create(T item);
         
        
     }

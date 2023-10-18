@@ -9,7 +9,7 @@ using System.IO;
 
 namespace DAL
 {
-    internal class Serializer<T>
+    public class Serializer<T>
     {
 
 
@@ -18,7 +18,7 @@ namespace DAL
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                using (FileStream xmlOut = new FileStream("", FileMode.Append, FileAccess.Write))
+                using (FileStream xmlOut = new FileStream("pods.xml", FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(xmlOut, list);
                 }
@@ -34,7 +34,7 @@ namespace DAL
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                using (FileStream xmlIn = new FileStream("", FileMode.Append, FileAccess.Read))
+                using (FileStream xmlIn = new FileStream("pods.xml", FileMode.Open, FileAccess.Read))
                 {
                     list = (List<T>)xmlSerializer.Deserialize(xmlIn);
                 }
