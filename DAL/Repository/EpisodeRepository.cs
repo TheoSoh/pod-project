@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Models;
-using DAL;
-using DAL.Repository;
 
-namespace BLL.Controllers
+namespace DAL.Repository
 {
-    public class PodController
+    public class EpisodeRepository
     {
     }
 }
