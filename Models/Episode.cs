@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Episode
+    public class Episode
     {
+
+        public Episode()
+        {
+            List<Episode> allEpisodes = new List<Episode>();
+        }
+
+        public string NameOfEpisode { get; set; }
+        public string Description { get; set; }
     }
 }

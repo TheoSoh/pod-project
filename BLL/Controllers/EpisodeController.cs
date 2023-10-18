@@ -4,12 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using System.IO;
 using DAL;
-using DAL.Repository;
+using System.Runtime.Serialization.Json;
 
 namespace BLL.Controllers
 {
-    public class PodController
+    public class EpisodeController 
     {
+         
+        public EpisodeController()
+        {
+        }
+
+ 
+
     }
 }

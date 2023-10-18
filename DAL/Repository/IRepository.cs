@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    internal class IRepository
+    public interface IRepository<T> where T : class
     {
+        List<T> GetAll();
+        
+       
     }
 }
