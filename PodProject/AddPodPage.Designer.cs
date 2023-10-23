@@ -32,11 +32,9 @@
             txtUrl = new TextBox();
             txtName = new TextBox();
             cmbCategory = new ComboBox();
-            cmbIntervall = new ComboBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
             btnAdd = new Button();
             SuspendLayout();
             // 
@@ -72,14 +70,6 @@
             cmbCategory.Size = new Size(352, 40);
             cmbCategory.TabIndex = 3;
             // 
-            // cmbIntervall
-            // 
-            cmbIntervall.FormattingEnabled = true;
-            cmbIntervall.Location = new Point(389, 489);
-            cmbIntervall.Name = "cmbIntervall";
-            cmbIntervall.Size = new Size(352, 40);
-            cmbIntervall.TabIndex = 4;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -110,21 +100,11 @@
             label4.TabIndex = 7;
             label4.Text = "Kategori:";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(244, 489);
-            label5.Name = "label5";
-            label5.Size = new Size(144, 36);
-            label5.TabIndex = 8;
-            label5.Text = "Intervall:";
-            // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.Snow;
             btnAdd.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAdd.Location = new Point(458, 580);
+            btnAdd.Location = new Point(442, 510);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(230, 46);
             btnAdd.TabIndex = 9;
@@ -139,11 +119,9 @@
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1084, 779);
             Controls.Add(btnAdd);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(cmbIntervall);
             Controls.Add(cmbCategory);
             Controls.Add(txtName);
             Controls.Add(txtUrl);
@@ -161,11 +139,9 @@
         private TextBox txtUrl;
         private TextBox txtName;
         private ComboBox cmbCategory;
-        private ComboBox cmbIntervall;
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
         private Button btnAdd;
     }
 }

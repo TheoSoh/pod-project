@@ -11,11 +11,40 @@ namespace DAL.Repository
     {
         List<Category> categoryList;
         Serializer<Category> serializer;
+        
         public CategoryRepository()
         {
             categoryList = new List<Category>();
             serializer = new Serializer<Category>(nameof(categoryList));
         }
 
+        public List<Category> GetAll()
+        {
+            throw new Exception();
+        }
+        public void Add(Category item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(Category item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> FetchAllCategories()
+        {
+            return ReaderWriterTxt.txtReader();
+        }
+
+        public void CreateDefaultCategories()
+        {
+            ReaderWriterTxt.txtWriter();
+        }
     }
 }
