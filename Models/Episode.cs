@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Models
 {
+    [Serializable]
     public class Episode
     {
-
-        public Episode()
-        {
-            List<Episode> allEpisodes = new List<Episode>();
-        }
-
-        public string NameOfEpisode { get; set; }
+        public string Titel { get; set; }
         public string Description { get; set; }
+        public string PublishDate { get; set; }
+        public string EpisodeUrl { get; set; }
+
+        public Episode() { }
+
     }
 }
