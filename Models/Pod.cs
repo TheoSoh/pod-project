@@ -13,14 +13,15 @@ namespace Models
         public string Title { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public string Category { get; set; }
         public string Description { get; set; }
         public List<Episode> Episodes { get; set; }
-        public Category Category { get; set; }
         public Pod() { }
-        public Pod(string url, string name)
+        public Pod(string url, string name, string category)
         {
             Url = url;
             Name = name;
+            Category = category;
         }
     }
 }

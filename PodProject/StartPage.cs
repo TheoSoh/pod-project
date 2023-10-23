@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,13 @@ namespace PodProject
     public partial class StartPage : Form
     {
         private Form activeForm = null;
+        CategoryController controller;
         public StartPage()
         {
             InitializeComponent();
+            CategoryController controller = new CategoryController();
+            controller.AddNewCategory();
+
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -37,6 +42,11 @@ namespace PodProject
         private void btnAddPod_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AddPodPage(), sender);
+        }
+
+        private void btnLibrary_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new LibraryPage(), sender);
         }
     }
 }

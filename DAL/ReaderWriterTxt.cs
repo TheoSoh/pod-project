@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using System.Linq;
 
 namespace DAL
 {
@@ -11,7 +13,7 @@ namespace DAL
     {
         public static void txtWriter()
         {
-            string[] lines = { "Komedi", "Historia", "Sport" };
+            string[] lines = { "","Komedi", "Historia", "Crime", "Sport" };
 
             using (FileStream fileStream = new FileStream("Category.txt", FileMode.OpenOrCreate, FileAccess.Write))
             {
@@ -43,6 +45,7 @@ namespace DAL
             }
         }
 
+      
     }
 }
 

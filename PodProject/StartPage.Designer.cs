@@ -45,7 +45,7 @@
             panel1.Controls.Add(header);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(6, 6, 6, 6);
+            panel1.Margin = new Padding(6);
             panel1.Name = "panel1";
             panel1.Size = new Size(2175, 213);
             panel1.TabIndex = 0;
@@ -70,7 +70,7 @@
             menuPanel.Controls.Add(btnLibrary);
             menuPanel.Dock = DockStyle.Left;
             menuPanel.Location = new Point(0, 213);
-            menuPanel.Margin = new Padding(6, 6, 6, 6);
+            menuPanel.Margin = new Padding(6);
             menuPanel.Name = "menuPanel";
             menuPanel.Size = new Size(260, 1154);
             menuPanel.TabIndex = 1;
@@ -79,7 +79,7 @@
             // 
             btnManageCategories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnManageCategories.Location = new Point(19, 294);
-            btnManageCategories.Margin = new Padding(6, 6, 6, 6);
+            btnManageCategories.Margin = new Padding(6);
             btnManageCategories.Name = "btnManageCategories";
             btnManageCategories.Size = new Size(223, 128);
             btnManageCategories.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             btnAddPod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddPod.Location = new Point(19, 154);
-            btnAddPod.Margin = new Padding(6, 6, 6, 6);
+            btnAddPod.Margin = new Padding(6);
             btnAddPod.Name = "btnAddPod";
             btnAddPod.Size = new Size(223, 128);
             btnAddPod.TabIndex = 1;
@@ -102,17 +102,18 @@
             // 
             btnLibrary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnLibrary.Location = new Point(19, 13);
-            btnLibrary.Margin = new Padding(6, 6, 6, 6);
+            btnLibrary.Margin = new Padding(6);
             btnLibrary.Name = "btnLibrary";
             btnLibrary.Size = new Size(223, 128);
             btnLibrary.TabIndex = 0;
             btnLibrary.Text = "Mina poddar";
             btnLibrary.UseVisualStyleBackColor = true;
+            btnLibrary.Click += btnLibrary_Click;
             // 
             // pagePanel
             // 
             pagePanel.Location = new Point(258, 213);
-            pagePanel.Margin = new Padding(6, 6, 6, 6);
+            pagePanel.Margin = new Padding(6);
             pagePanel.Name = "pagePanel";
             pagePanel.Size = new Size(1917, 1154);
             pagePanel.TabIndex = 2;
@@ -125,7 +126,7 @@
             Controls.Add(pagePanel);
             Controls.Add(menuPanel);
             Controls.Add(panel1);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "StartPage";
             Text = "StartPage";
             panel1.ResumeLayout(false);

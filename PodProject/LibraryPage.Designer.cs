@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -45,8 +46,8 @@
             cmbChangeInterval = new ComboBox();
             btnSaveChanges = new Button();
             label7 = new Label();
-            comboBox3 = new ComboBox();
-            listView1 = new ListView();
+            cmbCategories = new ComboBox();
+            listViewPods = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -195,25 +196,26 @@
             label7.TabIndex = 16;
             label7.Text = "Sortera efter kategori:";
             // 
-            // comboBox3
+            // cmbCategories
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(291, 111);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(242, 40);
-            comboBox3.TabIndex = 17;
+            cmbCategories.FormattingEnabled = true;
+            cmbCategories.Location = new Point(291, 111);
+            cmbCategories.Name = "cmbCategories";
+            cmbCategories.Size = new Size(242, 40);
+            cmbCategories.TabIndex = 17;
+            cmbCategories.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
-            // listView1
+            // listViewPods
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1.FullRowSelect = true;
-            listView1.GridLines = true;
-            listView1.Location = new Point(39, 171);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(716, 388);
-            listView1.TabIndex = 18;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listViewPods.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            listViewPods.FullRowSelect = true;
+            listViewPods.GridLines = true;
+            listViewPods.Location = new Point(39, 171);
+            listViewPods.Name = "listViewPods";
+            listViewPods.Size = new Size(716, 388);
+            listViewPods.TabIndex = 18;
+            listViewPods.UseCompatibleStateImageBehavior = false;
+            listViewPods.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -262,8 +264,8 @@
             ClientSize = new Size(1441, 962);
             Controls.Add(label8);
             Controls.Add(listBox2);
-            Controls.Add(listView1);
-            Controls.Add(comboBox3);
+            Controls.Add(listViewPods);
+            Controls.Add(cmbCategories);
             Controls.Add(label7);
             Controls.Add(btnSaveChanges);
             Controls.Add(cmbChangeInterval);
@@ -304,8 +306,8 @@
         private ComboBox cmbChangeInterval;
         private Button btnSaveChanges;
         private Label label7;
-        private ComboBox comboBox3;
-        private ListView listView1;
+        private ComboBox cmbCategories;
+        private ListView listViewPods;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;

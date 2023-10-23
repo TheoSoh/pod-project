@@ -31,6 +31,7 @@ namespace BLL.Controllers
             categoryRepository.CreateDefaultCategories();
         }
 
+
     }
 }
 

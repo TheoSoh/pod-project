@@ -17,10 +17,10 @@ namespace BLL
         {
             podRepo = new PodRepository();
         }
-        public void CreatePod(string rssUrl, string name)
+        public void CreatePod(string rssUrl, string name, string category)
         {
-            Pod newPod = new Pod(rssUrl, name);
-            newPod.Category = new Category();
+            Pod newPod = new Pod(rssUrl, name,category);
+            //newPod.Category = new Category();
             newPod.Title = podRepo.FetchPodTitleFromUrl(rssUrl);
             newPod.Description = podRepo.FetchPodDescriptionFromUrl(rssUrl);
             newPod.Episodes = podRepo.FetchEpisodesFromUrl(rssUrl);
@@ -30,6 +30,16 @@ namespace BLL
         public List<Pod> GetPodList()
         {
             return podRepo.GetAll();
+        }
+
+        public List<Pod> podHasCategory(string category)
+        {
+
+            var SelectCategory = from enPod in GetPodList()
+                                 where enPod.Category.Equals(category)
+                                 select enPod;
+            return SelectCategory.ToList();
+
         }
     }
 }
