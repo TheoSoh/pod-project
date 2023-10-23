@@ -4,48 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Models;
-using System.IO;
 
 namespace DAL
 {
-    public class Serializer<T>
+    internal class Serializer<T>
     {
+        private string path;
 
+        public Serializer(string path)
+        {
+            this.path = path + ".xml";
+        }
 
         public void Serialize(List<T> list)
         {
             try
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                using (FileStream xmlOut = new FileStream("pods.xml", FileMode.OpenOrCreate, FileAccess.Write))
+                using (FileStream xmlOut = new FileStream(path, FileMode.Create, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(xmlOut, list);
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
         public List<T> Deserialize()
         {
             List<T> list = new List<T>();
-            try
+            if (File.Exists(path))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                using (FileStream xmlIn = new FileStream("pods.xml", FileMode.Open, FileAccess.Read))
+                try
                 {
-                    list = (List<T>)xmlSerializer.Deserialize(xmlIn);
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+                    using (FileStream xmlIn = new FileStream(path, FileMode.Open, FileAccess.Read))
+                    {
+                        list = (List<T>)xmlSerializer.Deserialize(xmlIn);
+                    }
                 }
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-            } 
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
             return list;
         }
-
 
     }
 }

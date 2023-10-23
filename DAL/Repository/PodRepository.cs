@@ -1,31 +1,72 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
 
 namespace DAL.Repository
 {
-    public class PodRepository: IRepository<Pod>
+    public class PodRepository : IPodRepository<Pod>
     {
-        List<Pod> pods;
+        List<Pod> podList;
         Serializer<Pod> serializer;
         public PodRepository()
         {
-            pods = new List<Pod>();
-            serializer = new Serializer<Pod>();
+            podList = new List<Pod>();
+            serializer = new Serializer<Pod>(nameof(podList));
         }
+
         public List<Pod> GetAll()
         {
-            throw new Exception();
+            List<Pod> podListDeserialized = new List<Pod>();
+            try
+            {
+                podListDeserialized = serializer.Deserialize();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return podListDeserialized;
         }
 
-        public void Create (Pod item)
+        public void Create(Pod aPod)
         {
-            throw new Exception (); 
+            podList = GetAll();
+            podList.Add(aPod);
+            SaveChanges();
         }
 
-        
+        public string FetchPodTitleFromUrl(string rssUrl)
+        {
+            string podTitle = RssReader.FetchPodTitleFromUrl(rssUrl);
+            return podTitle;
+        }
+
+        public string FetchPodDescriptionFromUrl(string rssUrl)
+        {
+            string podDescription = RssReader.FetchPodDescriptionFromUrl(rssUrl);
+            return podDescription;
+        }
+
+        public List<Episode> FetchEpisodesFromUrl(string rssUrl)
+        {
+            List<Episode> episodes = RssReader.FetchEpisodesFromUrl(rssUrl);
+            return episodes;
+        }
+
+        public void SaveChanges()
+        {
+            try
+            {
+                serializer.Serialize(podList);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
     }
 }
