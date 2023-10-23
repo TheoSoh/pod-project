@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO.Enumeration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Models
 {
     [Serializable]
     public class Pod
     {
-
-        public Pod(string title,string url)
+        public string Title { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string Description { get; set; }
+        public List<Episode> Episodes { get; set; }
+        public Category Category { get; set; }
+        public Pod() { }
+        public Pod(string url, string name)
         {
-
-            Title = title;
-            FileName = url;
-            
+            Url = url;
+            Name = name;
         }
-
-        public Pod()
-        {
-
-        }
-
-    
-        public double AmoutOfEpisodes {  get; set; }
-        public string Title{ get; set; }
-        public string Category{ get; set; }   
-        public string FileName { get; }
     }
 }
