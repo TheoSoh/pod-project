@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using System.Linq;
+using System.Xml;
 
 namespace DAL
 {
@@ -67,6 +68,20 @@ namespace DAL
                 File.WriteAllLines("Category.txt", categories);
             }
         }
+
+        public static void UpdateCategoryName (string categoryName, string newCategoryName)
+        {
+            var categories = File.ReadAllText("Category.txt");
+            
+            
+             categories = categories.Replace(categoryName,newCategoryName);
+
+            File.WriteAllText("Category.txt", categories);
+            
+
+        }
+
+       
 
       
     }

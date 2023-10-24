@@ -41,6 +41,11 @@ namespace BLL.Controllers
             categoryRepository.Delete(categoryName);
         }
 
+        public void ReplaceCategoryName (string categoryName, string newCategoryName)
+        {
+            categoryRepository.Update(categoryName, newCategoryName);
+        }
+
     }
 }
 

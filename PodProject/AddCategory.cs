@@ -44,7 +44,7 @@ namespace PodProject
 
             cmbSelectCategory.Items.Clear();
             FillCombobox();
-          
+
         }
 
         public void FillCombobox()
@@ -56,5 +56,17 @@ namespace PodProject
                 cmbSelectCategory.Items.Add(category);
             }
         }
-}
+
+        private void btnChangeNameCat_Click(object sender, EventArgs e)
+
+        {
+            string categoryName = cmbSelectCategory.SelectedItem.ToString();
+            string newCategoryName = txtNewNameCategory.Text;
+
+            categoryController.ReplaceCategoryName(categoryName, newCategoryName);
+
+            cmbSelectCategory.Items.Clear();
+            FillCombobox();
+        }
+    }
 }

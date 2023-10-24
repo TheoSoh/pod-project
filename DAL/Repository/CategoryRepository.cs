@@ -34,6 +34,11 @@ namespace DAL.Repository
             ReaderWriterTxt.DeleteCategoryFromFile(category);
         }
 
+        public void Update(string categoryName,string newCategoryName)
+        {
+            ReaderWriterTxt.UpdateCategoryName(categoryName,newCategoryName);
+        }
+
         
         public void Add(Category item)
         {
