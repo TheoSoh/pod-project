@@ -121,6 +121,7 @@
             btnChangeNameCat.TabIndex = 8;
             btnChangeNameCat.Text = "Ändra namn";
             btnChangeNameCat.UseVisualStyleBackColor = true;
+            btnChangeNameCat.Click += btnChangeNameCat_Click;
             // 
             // btnDeleteCategory
             // 
