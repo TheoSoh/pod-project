@@ -48,5 +48,10 @@ namespace PodProject
         {
             OpenChildForm(new LibraryPage(), sender);
         }
+
+        private void btnManageCategories_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AddCategory(), sender);
+        }
     }
 }

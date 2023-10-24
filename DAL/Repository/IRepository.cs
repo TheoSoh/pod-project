@@ -12,5 +12,7 @@ namespace DAL.Repository
         List<T> GetAll();
         void Create(T item);
         void SaveChanges();
+
+      
     }
 }

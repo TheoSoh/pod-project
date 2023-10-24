@@ -31,6 +31,15 @@ namespace BLL.Controllers
             categoryRepository.CreateDefaultCategories();
         }
 
+        public void addNewCategoryToTxt(string categoryName)
+        {
+            categoryRepository.AddNewCategories(categoryName);
+        }
+
+        public void removeCategory(string categoryName)
+        {
+            categoryRepository.Delete(categoryName);
+        }
 
     }
 }

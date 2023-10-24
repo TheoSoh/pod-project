@@ -81,6 +81,7 @@
             btnManageCategories.TabIndex = 2;
             btnManageCategories.Text = "Hantera kategorier";
             btnManageCategories.UseVisualStyleBackColor = true;
+            btnManageCategories.Click += btnManageCategories_Click;
             // 
             // btnAddPod
             // 
