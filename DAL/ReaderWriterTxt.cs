@@ -26,6 +26,18 @@ namespace DAL
 
         }
 
+        public static void txtWriterNew(string newCategory)
+        {
+            using (FileStream fileStream = new FileStream("Category.txt", FileMode.Append, FileAccess.Write))
+            {
+                using (StreamWriter writer = new StreamWriter(fileStream))
+                {
+                    writer.WriteLine(newCategory);
+                  
+                }
+            }
+        }
+
         public static List<string> txtReader()
         {
             using (FileStream fileStream = new FileStream("Category.txt", FileMode.Open, FileAccess.Read))
@@ -42,6 +54,17 @@ namespace DAL
                     }
                     return result;
                 }
+            }
+        }
+
+
+        public static void DeleteCategoryFromFile (string category)
+        {
+            var categories = File.ReadAllLines("Category.txt").ToList();
+            if(categories.Contains(category))
+            {
+                categories.Remove(category);
+                File.WriteAllLines("Category.txt", categories);
             }
         }
 

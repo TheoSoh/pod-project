@@ -85,6 +85,7 @@
             cmbSelectCategory.Name = "cmbSelectCategory";
             cmbSelectCategory.Size = new Size(234, 40);
             cmbSelectCategory.TabIndex = 4;
+            cmbSelectCategory.SelectedIndexChanged += cmbSelectCategory_SelectedIndexChanged;
             // 
             // txtNewNameCategory
             // 
@@ -130,6 +131,7 @@
             btnDeleteCategory.TabIndex = 9;
             btnDeleteCategory.Text = "Ta bort";
             btnDeleteCategory.UseVisualStyleBackColor = true;
+            btnDeleteCategory.Click += btnDeleteCategory_Click;
             // 
             // btnAddCategory
             // 
@@ -140,6 +142,7 @@
             btnAddCategory.TabIndex = 10;
             btnAddCategory.Text = "Lägg till";
             btnAddCategory.UseVisualStyleBackColor = true;
+            btnAddCategory.Click += btnAddCategory_Click;
             // 
             // AddCategory
             // 

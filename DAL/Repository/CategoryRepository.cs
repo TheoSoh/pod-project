@@ -22,6 +22,19 @@ namespace DAL.Repository
         {
             throw new Exception();
         }
+
+        public void Update()
+        {
+            throw new Exception();
+        }
+
+        public void Delete(string category)
+        {
+
+            ReaderWriterTxt.DeleteCategoryFromFile(category);
+        }
+
+        
         public void Add(Category item)
         {
             throw new NotImplementedException();
@@ -45,6 +58,11 @@ namespace DAL.Repository
         public void CreateDefaultCategories()
         {
             ReaderWriterTxt.txtWriter();
+        }
+
+        public void AddNewCategories(string newCategory)
+        {
+            ReaderWriterTxt.txtWriterNew(newCategory);
         }
     }
 }
