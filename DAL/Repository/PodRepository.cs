@@ -68,5 +68,10 @@ namespace DAL.Repository
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+        public Pod GetByPodTitle(string title)
+        {
+            return GetAll().FirstOrDefault(p => p.Title.Equals(title));
+        }
     }
 }
