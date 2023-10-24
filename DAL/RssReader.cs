@@ -51,7 +51,7 @@ namespace DAL
                 foreach (SyndicationItem item in synFeed.Items)
                 {
                     Episode episode = new Episode();
-                    episode.Titel = item.Title.Text;
+                    episode.Title = item.Title.Text;
                     episode.Description = item.Summary.Text;
                     episode.PublishDate = item.PublishDate.ToString();
                     episode.EpisodeUrl = item.Links[0].Uri.ToString();

@@ -12,5 +12,6 @@ namespace DAL.Repository
         List<Episode> FetchEpisodesFromUrl(string rssurl);
         public string FetchPodTitleFromUrl(string rssUrl);
         public string FetchPodDescriptionFromUrl(string rssUrl);
+        public Pod GetByPodTitle(string title);
     }
 }

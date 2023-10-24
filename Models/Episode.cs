@@ -10,7 +10,7 @@ namespace Models
     [Serializable]
     public class Episode
     {
-        public string Titel { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string PublishDate { get; set; }
         public string EpisodeUrl { get; set; }

@@ -34,12 +34,15 @@ namespace BLL
 
         public List<Pod> podHasCategory(string category)
         {
+            var selectCategory = from aPod in GetPodList()
+                                 where aPod.Category.Equals(category)
+                                 select aPod;
+            return selectCategory.ToList();
+        }
 
-            var SelectCategory = from enPod in GetPodList()
-                                 where enPod.Category.Equals(category)
-                                 select enPod;
-            return SelectCategory.ToList();
-
+        public List<Episode> GetEpisodesByPodTitle(string podTitle)
+        {
+            return podRepo.GetByPodTitle(podTitle).Episodes;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace PodProject
     {
         PodController podController;
         CategoryController categoryController;
+        string selectedPodTitle;
         public LibraryPage()
         {
             InitializeComponent();
@@ -46,8 +47,7 @@ namespace PodProject
         private void FillPodTable()
         {
             listViewPods.Items.Clear();
-            List<Pod> podList = podController.GetPodList();
-            foreach (Pod pod in podList)
+            foreach (Pod pod in podController.GetPodList())
             {
                 string[] podInfo = { pod.Name, pod.Title, pod.Category, pod.Episodes.Count.ToString() };
                 ListViewItem item = new ListViewItem(podInfo);
@@ -55,5 +55,30 @@ namespace PodProject
             }
         }
 
+        private void listViewPods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxEpisodes.Items.Clear();
+            if (listViewPods.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listViewPods.SelectedItems[0];
+                selectedPodTitle = selectedItem.SubItems[1].Text;
+                foreach (Episode anEpisode in podController.GetEpisodesByPodTitle(selectedPodTitle))
+                {
+                    listBoxEpisodes.Items.Add(anEpisode.Title);
+                }
+            }
+        }
+
+        private void listBoxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBoxDescription.Text = "";
+            if (listBoxEpisodes.SelectedItems.Count > 0)
+            {
+                string selectedEpisodeTitle = listBoxEpisodes.SelectedItem.ToString();
+                List<Episode> selectedPodsEpisodes = podController.GetEpisodesByPodTitle(selectedPodTitle);
+                Episode selectedEpisode = selectedPodsEpisodes.FirstOrDefault(e => e.Title.Equals(selectedEpisodeTitle));
+                txtBoxDescription.Text = selectedEpisode.Description;
+            }
+        }
     }
 }
