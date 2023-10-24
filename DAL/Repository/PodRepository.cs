@@ -1,6 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
@@ -73,5 +74,7 @@ namespace DAL.Repository
         {
             return GetAll().FirstOrDefault(p => p.Title.Equals(title));
         }
+
+      
     }
 }
