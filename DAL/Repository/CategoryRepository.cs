@@ -34,6 +34,11 @@ namespace DAL.Repository
             ReaderWriterTxt.DeleteCategoryFromFile(category);
         }
 
+        public void DeleteCategoryXml (string category)
+        {
+            RssReader.DeleteCategoryXml(category);
+        }
+
         public void Update(string categoryName,string newCategoryName)
         {
             ReaderWriterTxt.UpdateCategoryName(categoryName,newCategoryName);
@@ -65,9 +70,16 @@ namespace DAL.Repository
             ReaderWriterTxt.txtWriter();
         }
 
+
+
         public void AddNewCategories(string newCategory)
         {
             ReaderWriterTxt.txtWriterNew(newCategory);
+        }
+
+        public void UpdateInXml(string categoryName, string newCategoryName)
+        {
+            RssReader.UpdateXml(categoryName, newCategoryName);
         }
     }
 }

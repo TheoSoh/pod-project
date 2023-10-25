@@ -26,7 +26,7 @@ namespace BLL.Controllers
             return listCategory;
         }
 
-        public void AddNewCategory()
+        public void AddDefaultCategory()
         {
             categoryRepository.CreateDefaultCategories();
         }
@@ -46,6 +46,15 @@ namespace BLL.Controllers
             categoryRepository.Update(categoryName, newCategoryName);
         }
 
+        public void ReplaceCategoryNameXml (string categoryName, string newCategoryNameXml)
+        {
+            categoryRepository.UpdateInXml(categoryName, newCategoryNameXml);
+        }
+
+        public void RemoveCategoryXml(string categoryName)
+        {
+            categoryRepository.DeleteCategoryXml(categoryName);
+        }
     }
 }
 

@@ -6,6 +6,7 @@ using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -81,6 +82,34 @@ namespace DAL
                 Console.WriteLine($"{ex.Message}");
             }
             return synFeed;
+        }
+
+        public static void UpdateXml (string categoryName, string newCategoryName)
+        {
+            var doc = XDocument.Load("podList.xml");
+
+            var node = doc.Descendants("Pod").Where(pod =>(string)pod.Element("Category") == categoryName);
+
+            foreach (var podd in node)
+            {
+                podd.SetElementValue("Category", newCategoryName);
+            }
+            
+
+            doc.Save("podList.xml");
+        }
+
+        public static void DeleteCategoryXml (string categoryName)
+        {
+            var doc = XDocument.Load("podList.xml");
+            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Category") == categoryName);
+
+            foreach(var podd in node)
+            {
+                podd.SetElementValue("Category", "");
+            }
+
+            doc.Save("podList.xml");
         }
 
         
