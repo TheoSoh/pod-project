@@ -75,6 +75,8 @@ namespace DAL.Repository
             return GetAll().FirstOrDefault(p => p.Title.Equals(title));
         }
 
+       
+
       
     }
 }

@@ -19,8 +19,10 @@ namespace PodProject
         {
             InitializeComponent();
             CategoryController controller = new CategoryController();
-            controller.AddNewCategory();
-
+            if(!File.Exists("Category.txt"))
+            {
+                controller.AddDefaultCategory();
+            }
         }
 
         private void OpenChildForm(Form childForm, object btnSender)

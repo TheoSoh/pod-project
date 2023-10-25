@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
 
 namespace PodProject
 {
@@ -42,6 +43,8 @@ namespace PodProject
             string choosenCategory = cmbSelectCategory.SelectedItem.ToString();
             categoryController.removeCategory(choosenCategory);
 
+            categoryController.RemoveCategoryXml(choosenCategory);
+
             cmbSelectCategory.Items.Clear();
             FillCombobox();
 
@@ -64,6 +67,8 @@ namespace PodProject
             string newCategoryName = txtNewNameCategory.Text;
 
             categoryController.ReplaceCategoryName(categoryName, newCategoryName);
+            
+            categoryController.ReplaceCategoryNameXml(categoryName, newCategoryName);
 
             cmbSelectCategory.Items.Clear();
             FillCombobox();
