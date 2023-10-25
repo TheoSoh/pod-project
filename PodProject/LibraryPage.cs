@@ -28,6 +28,7 @@ namespace PodProject
             foreach (string category in categorys)
             {
                 cmbCategories.Items.Add(category);
+                cmbChangeCategory.Items.Add(category);
             }
             FillPodTable();
         }
@@ -79,6 +80,14 @@ namespace PodProject
                 Episode selectedEpisode = selectedPodsEpisodes.FirstOrDefault(e => e.Title.Equals(selectedEpisodeTitle));
                 txtBoxDescription.Text = selectedEpisode.Description;
             }
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            
+
+          
+
         }
     }
 }

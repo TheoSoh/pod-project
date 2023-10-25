@@ -58,11 +58,11 @@
             // listBoxEpisodes
             // 
             listBoxEpisodes.FormattingEnabled = true;
-            listBoxEpisodes.ItemHeight = 15;
-            listBoxEpisodes.Location = new Point(475, 80);
-            listBoxEpisodes.Margin = new Padding(2, 1, 2, 1);
+            listBoxEpisodes.ItemHeight = 32;
+            listBoxEpisodes.Location = new Point(882, 171);
+            listBoxEpisodes.Margin = new Padding(4, 2, 4, 2);
             listBoxEpisodes.Name = "listBoxEpisodes";
-            listBoxEpisodes.Size = new Size(279, 184);
+            listBoxEpisodes.Size = new Size(515, 388);
             listBoxEpisodes.TabIndex = 0;
             listBoxEpisodes.SelectedIndexChanged += listBoxEpisodes_SelectedIndexChanged;
             // 
@@ -70,10 +70,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(21, 35);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(39, 75);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(61, 19);
+            label1.Size = new Size(128, 36);
             label1.TabIndex = 2;
             label1.Text = "Poddar:";
             // 
@@ -81,10 +81,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(475, 53);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(882, 113);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(61, 19);
+            label2.Size = new Size(124, 36);
             label2.TabIndex = 3;
             label2.Text = "Avsnitt:";
             // 
@@ -92,9 +92,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(21, 281);
+            label3.Location = new Point(39, 599);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(119, 19);
+            label3.Size = new Size(248, 36);
             label3.TabIndex = 4;
             label3.Text = "Hantera poddar:";
             // 
@@ -102,28 +103,29 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(251, 292);
+            label4.Location = new Point(466, 623);
+            label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
-            label4.Size = new Size(90, 15);
+            label4.Size = new Size(178, 26);
             label4.TabIndex = 5;
             label4.Text = "Ändra kategori:";
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(21, 314);
-            btnDelete.Margin = new Padding(2, 1, 2, 1);
+            btnDelete.Location = new Point(39, 670);
+            btnDelete.Margin = new Padding(4, 2, 4, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(81, 22);
+            btnDelete.Size = new Size(150, 47);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnChange
             // 
-            btnChange.Location = new Point(119, 314);
-            btnChange.Margin = new Padding(2, 1, 2, 1);
+            btnChange.Location = new Point(221, 670);
+            btnChange.Margin = new Padding(4, 2, 4, 2);
             btnChange.Name = "btnChange";
-            btnChange.Size = new Size(81, 22);
+            btnChange.Size = new Size(150, 47);
             btnChange.TabIndex = 7;
             btnChange.Text = "Ändra";
             btnChange.UseVisualStyleBackColor = true;
@@ -131,78 +133,79 @@
             // cmbChangeCategory
             // 
             cmbChangeCategory.FormattingEnabled = true;
-            cmbChangeCategory.Location = new Point(350, 289);
-            cmbChangeCategory.Margin = new Padding(2, 1, 2, 1);
+            cmbChangeCategory.Location = new Point(650, 617);
+            cmbChangeCategory.Margin = new Padding(4, 2, 4, 2);
             cmbChangeCategory.Name = "cmbChangeCategory";
-            cmbChangeCategory.Size = new Size(132, 23);
+            cmbChangeCategory.Size = new Size(242, 40);
             cmbChangeCategory.TabIndex = 9;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(260, 323);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Location = new Point(483, 689);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(76, 15);
+            label5.Size = new Size(149, 26);
             label5.TabIndex = 11;
             label5.Text = "Ändra namn:";
             // 
             // txtChangeName
             // 
-            txtChangeName.Location = new Point(351, 319);
-            txtChangeName.Margin = new Padding(2, 1, 2, 1);
+            txtChangeName.Location = new Point(652, 681);
+            txtChangeName.Margin = new Padding(4, 2, 4, 2);
             txtChangeName.Name = "txtChangeName";
-            txtChangeName.Size = new Size(130, 23);
+            txtChangeName.Size = new Size(238, 39);
             txtChangeName.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(251, 350);
-            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Location = new Point(466, 747);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(91, 15);
+            label6.Size = new Size(179, 26);
             label6.TabIndex = 13;
             label6.Text = "Ändra intervall:";
             // 
             // cmbChangeInterval
             // 
             cmbChangeInterval.FormattingEnabled = true;
-            cmbChangeInterval.Location = new Point(350, 346);
-            cmbChangeInterval.Margin = new Padding(2, 1, 2, 1);
+            cmbChangeInterval.Location = new Point(650, 738);
+            cmbChangeInterval.Margin = new Padding(4, 2, 4, 2);
             cmbChangeInterval.Name = "cmbChangeInterval";
-            cmbChangeInterval.Size = new Size(130, 23);
+            cmbChangeInterval.Size = new Size(238, 40);
             cmbChangeInterval.TabIndex = 14;
             // 
             // btnSaveChanges
             // 
-            btnSaveChanges.Location = new Point(347, 387);
-            btnSaveChanges.Margin = new Padding(2, 1, 2, 1);
+            btnSaveChanges.Location = new Point(644, 826);
+            btnSaveChanges.Margin = new Padding(4, 2, 4, 2);
             btnSaveChanges.Name = "btnSaveChanges";
-            btnSaveChanges.Size = new Size(135, 22);
+            btnSaveChanges.Size = new Size(251, 47);
             btnSaveChanges.TabIndex = 15;
             btnSaveChanges.Text = "Spara ändringar";
             btnSaveChanges.UseVisualStyleBackColor = true;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(21, 56);
-            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Location = new Point(39, 119);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(120, 15);
+            label7.Size = new Size(246, 32);
             label7.TabIndex = 16;
             label7.Text = "Sortera efter kategori:";
             // 
             // cmbCategories
             // 
             cmbCategories.FormattingEnabled = true;
-            cmbCategories.Location = new Point(157, 52);
-            cmbCategories.Margin = new Padding(2, 1, 2, 1);
+            cmbCategories.Location = new Point(292, 111);
+            cmbCategories.Margin = new Padding(4, 2, 4, 2);
             cmbCategories.Name = "cmbCategories";
-            cmbCategories.Size = new Size(132, 23);
+            cmbCategories.Size = new Size(242, 40);
             cmbCategories.TabIndex = 17;
             cmbCategories.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
@@ -210,10 +213,10 @@
             // 
             listViewPods.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             listViewPods.FullRowSelect = true;
-            listViewPods.Location = new Point(21, 80);
-            listViewPods.Margin = new Padding(2, 1, 2, 1);
+            listViewPods.Location = new Point(39, 171);
+            listViewPods.Margin = new Padding(4, 2, 4, 2);
             listViewPods.Name = "listViewPods";
-            listViewPods.Size = new Size(424, 184);
+            listViewPods.Size = new Size(784, 388);
             listViewPods.TabIndex = 18;
             listViewPods.UseCompatibleStateImageBehavior = false;
             listViewPods.View = View.Details;
@@ -243,28 +246,29 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(525, 292);
-            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Location = new Point(975, 623);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(127, 15);
+            label8.Size = new Size(246, 26);
             label8.TabIndex = 20;
             label8.Text = "Beskrivning av avsnitt:";
             // 
             // txtBoxDescription
             // 
-            txtBoxDescription.Location = new Point(525, 314);
+            txtBoxDescription.Location = new Point(975, 670);
+            txtBoxDescription.Margin = new Padding(6, 6, 6, 6);
             txtBoxDescription.Name = "txtBoxDescription";
             txtBoxDescription.ReadOnly = true;
-            txtBoxDescription.Size = new Size(199, 95);
+            txtBoxDescription.Size = new Size(366, 198);
             txtBoxDescription.TabIndex = 21;
             txtBoxDescription.Text = "";
             // 
             // LibraryPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(776, 451);
+            ClientSize = new Size(1441, 962);
             Controls.Add(txtBoxDescription);
             Controls.Add(label8);
             Controls.Add(listViewPods);
@@ -283,7 +287,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(listBoxEpisodes);
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "LibraryPage";
             Text = "LibraryPage";
             ResumeLayout(false);
