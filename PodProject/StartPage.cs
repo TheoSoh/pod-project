@@ -19,7 +19,7 @@ namespace PodProject
         {
             InitializeComponent();
             CategoryController controller = new CategoryController();
-            if(!File.Exists("Category.txt"))
+            if (!File.Exists("Category.txt"))
             {
                 controller.AddDefaultCategory();
             }
@@ -46,9 +46,10 @@ namespace PodProject
             OpenChildForm(new AddPodPage(), sender);
         }
 
-        private void btnLibrary_Click(object sender, EventArgs e)
+        private async void btnLibrary_Click(object sender, EventArgs e)
         {
             OpenChildForm(new LibraryPage(), sender);
+            
         }
 
         private void btnManageCategories_Click(object sender, EventArgs e)

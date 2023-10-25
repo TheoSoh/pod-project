@@ -41,8 +41,6 @@
             cmbChangeCategory = new ComboBox();
             label5 = new Label();
             txtChangeName = new TextBox();
-            label6 = new Label();
-            cmbChangeInterval = new ComboBox();
             btnSaveChanges = new Button();
             label7 = new Label();
             cmbCategories = new ComboBox();
@@ -53,13 +51,15 @@
             columnHeader4 = new ColumnHeader();
             label8 = new Label();
             txtBoxDescription = new RichTextBox();
+            btnChangeName = new Button();
+            btnShowAllCategories = new Button();
             SuspendLayout();
             // 
             // listBoxEpisodes
             // 
             listBoxEpisodes.FormattingEnabled = true;
             listBoxEpisodes.ItemHeight = 32;
-            listBoxEpisodes.Location = new Point(882, 171);
+            listBoxEpisodes.Location = new Point(1062, 171);
             listBoxEpisodes.Margin = new Padding(4, 2, 4, 2);
             listBoxEpisodes.Name = "listBoxEpisodes";
             listBoxEpisodes.Size = new Size(515, 388);
@@ -81,7 +81,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(882, 113);
+            label2.Location = new Point(1062, 111);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(124, 36);
@@ -103,7 +103,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(466, 623);
+            label4.Location = new Point(457, 650);
             label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
             label4.Size = new Size(178, 26);
@@ -119,6 +119,7 @@
             btnDelete.TabIndex = 6;
             btnDelete.Text = "Ta bort";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnChange
             // 
@@ -133,7 +134,7 @@
             // cmbChangeCategory
             // 
             cmbChangeCategory.FormattingEnabled = true;
-            cmbChangeCategory.Location = new Point(650, 617);
+            cmbChangeCategory.Location = new Point(457, 696);
             cmbChangeCategory.Margin = new Padding(4, 2, 4, 2);
             cmbChangeCategory.Name = "cmbChangeCategory";
             cmbChangeCategory.Size = new Size(242, 40);
@@ -143,7 +144,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(483, 689);
+            label5.Location = new Point(795, 650);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(149, 26);
@@ -152,40 +153,20 @@
             // 
             // txtChangeName
             // 
-            txtChangeName.Location = new Point(652, 681);
+            txtChangeName.Location = new Point(795, 696);
             txtChangeName.Margin = new Padding(4, 2, 4, 2);
             txtChangeName.Name = "txtChangeName";
             txtChangeName.Size = new Size(238, 39);
             txtChangeName.TabIndex = 12;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(466, 747);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(179, 26);
-            label6.TabIndex = 13;
-            label6.Text = "Ändra intervall:";
-            // 
-            // cmbChangeInterval
-            // 
-            cmbChangeInterval.FormattingEnabled = true;
-            cmbChangeInterval.Location = new Point(650, 738);
-            cmbChangeInterval.Margin = new Padding(4, 2, 4, 2);
-            cmbChangeInterval.Name = "cmbChangeInterval";
-            cmbChangeInterval.Size = new Size(238, 40);
-            cmbChangeInterval.TabIndex = 14;
-            // 
             // btnSaveChanges
             // 
-            btnSaveChanges.Location = new Point(644, 826);
+            btnSaveChanges.Location = new Point(457, 776);
             btnSaveChanges.Margin = new Padding(4, 2, 4, 2);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(251, 47);
             btnSaveChanges.TabIndex = 15;
-            btnSaveChanges.Text = "Spara ändringar";
+            btnSaveChanges.Text = "Ändra kategori";
             btnSaveChanges.UseVisualStyleBackColor = true;
             btnSaveChanges.Click += btnSaveChanges_Click;
             // 
@@ -202,7 +183,7 @@
             // cmbCategories
             // 
             cmbCategories.FormattingEnabled = true;
-            cmbCategories.Location = new Point(292, 111);
+            cmbCategories.Location = new Point(293, 107);
             cmbCategories.Margin = new Padding(4, 2, 4, 2);
             cmbCategories.Name = "cmbCategories";
             cmbCategories.Size = new Size(242, 40);
@@ -216,7 +197,7 @@
             listViewPods.Location = new Point(39, 171);
             listViewPods.Margin = new Padding(4, 2, 4, 2);
             listViewPods.Name = "listViewPods";
-            listViewPods.Size = new Size(784, 388);
+            listViewPods.Size = new Size(954, 388);
             listViewPods.TabIndex = 18;
             listViewPods.UseCompatibleStateImageBehavior = false;
             listViewPods.View = View.Details;
@@ -225,28 +206,28 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Namn";
-            columnHeader1.Width = 100;
+            columnHeader1.Width = 250;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Titel";
-            columnHeader2.Width = 130;
+            columnHeader2.Width = 350;
             // 
             // columnHeader3
             // 
             columnHeader3.Text = "Kategori";
-            columnHeader3.Width = 100;
+            columnHeader3.Width = 200;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Antal avsnitt";
-            columnHeader4.Width = 90;
+            columnHeader4.Width = 150;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(975, 623);
+            label8.Location = new Point(1062, 617);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(246, 26);
@@ -255,28 +236,48 @@
             // 
             // txtBoxDescription
             // 
-            txtBoxDescription.Location = new Point(975, 670);
-            txtBoxDescription.Margin = new Padding(6, 6, 6, 6);
+            txtBoxDescription.Location = new Point(1062, 670);
+            txtBoxDescription.Margin = new Padding(6);
             txtBoxDescription.Name = "txtBoxDescription";
             txtBoxDescription.ReadOnly = true;
-            txtBoxDescription.Size = new Size(366, 198);
+            txtBoxDescription.Size = new Size(408, 258);
             txtBoxDescription.TabIndex = 21;
             txtBoxDescription.Text = "";
+            // 
+            // btnChangeName
+            // 
+            btnChangeName.Location = new Point(795, 777);
+            btnChangeName.Name = "btnChangeName";
+            btnChangeName.Size = new Size(200, 50);
+            btnChangeName.TabIndex = 22;
+            btnChangeName.Text = "Ändra namn";
+            btnChangeName.UseVisualStyleBackColor = true;
+            btnChangeName.Click += btnChangeName_Click;
+            // 
+            // btnShowAllCategories
+            // 
+            btnShowAllCategories.Location = new Point(586, 103);
+            btnShowAllCategories.Name = "btnShowAllCategories";
+            btnShowAllCategories.Size = new Size(300, 46);
+            btnShowAllCategories.TabIndex = 23;
+            btnShowAllCategories.Text = "Visa alla kategorier";
+            btnShowAllCategories.UseVisualStyleBackColor = true;
+            btnShowAllCategories.Click += btnShowAllCategories_Click;
             // 
             // LibraryPage
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
-            ClientSize = new Size(1441, 962);
+            ClientSize = new Size(1672, 962);
+            Controls.Add(btnShowAllCategories);
+            Controls.Add(btnChangeName);
             Controls.Add(txtBoxDescription);
             Controls.Add(label8);
             Controls.Add(listViewPods);
             Controls.Add(cmbCategories);
             Controls.Add(label7);
             Controls.Add(btnSaveChanges);
-            Controls.Add(cmbChangeInterval);
-            Controls.Add(label6);
             Controls.Add(txtChangeName);
             Controls.Add(label5);
             Controls.Add(cmbChangeCategory);
@@ -308,8 +309,6 @@
         private ComboBox cmbChangeCategory;
         private Label label5;
         private TextBox txtChangeName;
-        private Label label6;
-        private ComboBox cmbChangeInterval;
         private Button btnSaveChanges;
         private Label label7;
         private ComboBox cmbCategories;
@@ -320,5 +319,7 @@
         private ColumnHeader columnHeader4;
         private Label label8;
         private RichTextBox txtBoxDescription;
+        private Button btnChangeName;
+        private Button btnShowAllCategories;
     }
 }
