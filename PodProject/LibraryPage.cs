@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using BLL.Controllers;
 using BLL;
 
+
 namespace PodProject
 {
     public partial class LibraryPage : Form
@@ -19,6 +20,7 @@ namespace PodProject
         PodController podController;
         CategoryController categoryController;
         string selectedPodTitle;
+        ListViewItem selectedItem;
         public LibraryPage()
         {
             InitializeComponent();
@@ -45,6 +47,8 @@ namespace PodProject
             }
         }
 
+       
+        
         private void FillPodTable()
         {
             listViewPods.Items.Clear();
@@ -55,15 +59,15 @@ namespace PodProject
                 listViewPods.Items.Add(item);
             }
         }
-
+        
         private void listViewPods_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxEpisodes.Items.Clear();
             if (listViewPods.SelectedItems.Count > 0)
             {
-                ListViewItem selectedItem = listViewPods.SelectedItems[0];
+                selectedItem = listViewPods.SelectedItems[0];
                 selectedPodTitle = selectedItem.SubItems[1].Text;
-                foreach (Episode anEpisode in podController.GetEpisodesByPodTitle(selectedPodTitle))
+                foreach (Episode anEpisode in podController.GetPodByPodTitle(selectedPodTitle).Episodes)
                 {
                     listBoxEpisodes.Items.Add(anEpisode.Title);
                 }
@@ -76,7 +80,7 @@ namespace PodProject
             if (listBoxEpisodes.SelectedItems.Count > 0)
             {
                 string selectedEpisodeTitle = listBoxEpisodes.SelectedItem.ToString();
-                List<Episode> selectedPodsEpisodes = podController.GetEpisodesByPodTitle(selectedPodTitle);
+                List<Episode> selectedPodsEpisodes = podController.GetPodByPodTitle(selectedPodTitle).Episodes;
                 Episode selectedEpisode = selectedPodsEpisodes.FirstOrDefault(e => e.Title.Equals(selectedEpisodeTitle));
                 txtBoxDescription.Text = selectedEpisode.Description;
             }
@@ -84,10 +88,56 @@ namespace PodProject
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            
+            if (listViewPods.SelectedItems.Count > 0)
+            {
+                string selectedPodCategoryCmc = cmbChangeCategory.SelectedItem.ToString();
+                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
 
-          
 
+                categoryController.UpdateCategoryXml(podToChange.Category, selectedPodCategoryCmc, podToChange.Title);
+                FillPodTable();
+                cmbChangeCategory.SelectedIndex = -1;
+            }
+        }
+
+        private void btnChangeName_Click(object sender, EventArgs e)
+        {
+            if (listViewPods.SelectedItems.Count > 0)
+            {
+                string newName = txtChangeName.Text;
+                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
+                if (!ValidationController.CheckIfStringIsEmpty(newName))
+                {
+                    categoryController.UpdateNameXml(podToChange.Name, newName, podToChange.Title);
+                    FillPodTable();
+                    txtChangeName.Clear();
+                    var confirmResult = MessageBox.Show("Namnet på den valda poden har ändrats!", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    var confirmResult = MessageBox.Show("Ett namn måste fyllas i!", "", MessageBoxButtons.OK);
+                }
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (listViewPods.SelectedItems.Count > 0)
+            {
+
+                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
+
+
+                podController.DeletePodXml(podToChange.Title);
+                FillPodTable();
+
+            }
+        }
+
+        private void btnShowAllCategories_Click(object sender, EventArgs e)
+        {
+            FillPodTable();
         }
     }
 }

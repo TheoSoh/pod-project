@@ -15,6 +15,7 @@ namespace PodProject
     public partial class AddCategory : Form
     {
         CategoryController categoryController;
+        
         public AddCategory()
         {
             InitializeComponent();
@@ -30,10 +31,17 @@ namespace PodProject
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string newCategory = txtNewCategory.Text;
-            categoryController.addNewCategoryToTxt(newCategory);
-            cmbSelectCategory.Items.Clear();
-
-            FillCombobox();
+            if (!ValidationController.CheckIfStringIsEmpty(newCategory))
+            {
+                categoryController.addNewCategoryToTxt(newCategory);
+                cmbSelectCategory.Items.Clear();
+                FillCombobox();
+                var confirmResult = MessageBox.Show("Ny kategori har lagts till!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Den nya kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
+            }
 
 
         }
@@ -41,13 +49,19 @@ namespace PodProject
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
             string choosenCategory = cmbSelectCategory.SelectedItem.ToString();
-            categoryController.removeCategory(choosenCategory);
+            var confirmResult = MessageBox.Show("Vill du verkligen radera denna kategori?", "", MessageBoxButtons.YesNo);
 
-            categoryController.RemoveCategoryXml(choosenCategory);
-
-            cmbSelectCategory.Items.Clear();
-            FillCombobox();
-
+            if (confirmResult == DialogResult.Yes)
+            {
+                categoryController.removeCategory(choosenCategory);
+                categoryController.RemoveCategoryXml(choosenCategory);
+                cmbSelectCategory.Items.Clear();
+                FillCombobox();
+            }
+            else
+            {
+                return;
+            }
         }
 
         public void FillCombobox()
@@ -66,12 +80,20 @@ namespace PodProject
             string categoryName = cmbSelectCategory.SelectedItem.ToString();
             string newCategoryName = txtNewNameCategory.Text;
 
-            categoryController.ReplaceCategoryName(categoryName, newCategoryName);
-            
-            categoryController.ReplaceCategoryNameXml(categoryName, newCategoryName);
+            if (!ValidationController.CheckIfStringIsEmpty(newCategoryName)) { 
 
+            categoryController.ReplaceCategoryName(categoryName, newCategoryName);
+
+            categoryController.ReplaceCategoryNameXml(categoryName, newCategoryName);
             cmbSelectCategory.Items.Clear();
             FillCombobox();
+                var confirmResult = MessageBox.Show("Den valda kategorin har nu ett nytt namn!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
+            }
+           
         }
     }
 }
