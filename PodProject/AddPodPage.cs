@@ -16,6 +16,7 @@ namespace PodProject
     {
         PodController controller;
         CategoryController categoryController;
+        
         public AddPodPage()
         {
             InitializeComponent();
@@ -36,7 +37,17 @@ namespace PodProject
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+            string urlText = txtUrl.Text;
+            string nameText = txtName.Text;
+            if((!ValidationController.CheckIfStringIsEmpty(urlText)) && (!ValidationController.CheckIfStringIsEmpty(nameText)))
+            {
+                controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+                var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda!", "", MessageBoxButtons.OK);
+            }
         }
     }
 }

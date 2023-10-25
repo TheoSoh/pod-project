@@ -42,9 +42,14 @@ namespace BLL
             return selectCategory.ToList();
         }
 
-        public List<Episode> GetEpisodesByPodTitle(string podTitle)
+        public Pod GetPodByPodTitle(string podTitle)
         {
-            return podRepo.GetByPodTitle(podTitle).Episodes;
+            return podRepo.GetByPodTitle(podTitle);
+        }
+
+        public void DeletePodXml(string podTitle)
+        {
+            podRepo.DeletePodXml(podTitle);
         }
     }
 }

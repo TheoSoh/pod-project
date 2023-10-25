@@ -55,6 +55,16 @@ namespace BLL.Controllers
         {
             categoryRepository.DeleteCategoryXml(categoryName);
         }
+
+        public void UpdateCategoryXml(string categoryName, string newCategoryName, string podTitle)
+        {
+            categoryRepository.UpdateCategoryXml(categoryName, newCategoryName, podTitle);
+        }
+
+        public void UpdateNameXml (string currentName,string newName, string podTitle)
+        {
+            categoryRepository.UpdateNameXml(currentName, newName, podTitle);
+        }
     }
 }
 

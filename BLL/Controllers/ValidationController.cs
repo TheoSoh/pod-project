@@ -4,9 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace BLL.Controllers
 {
-    internal class ValidationController
+    public static class ValidationController
     {
+
+
+        public static bool CheckIfStringIsEmpty(string text)
+        {
+            if ((text == null) || (text == ""))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -75,8 +75,16 @@ namespace DAL.Repository
             return GetAll().FirstOrDefault(p => p.Title.Equals(title));
         }
 
-       
+       public void update(int index, Pod pod)
+        {
+            podList[index] = pod;
+            SaveChanges();
+        }
 
-      
+        public void DeletePodXml(string podTitle)
+        {
+            RssReader.DeletePodXml(podTitle);
+        }
+
     }
 }

@@ -112,6 +112,40 @@ namespace DAL
             doc.Save("podList.xml");
         }
 
-        
+        public static void UpdateCategoryXml(string currentCategoryName, string newCategoryName, string podTitle)
+        {
+            var doc = XDocument.Load("podList.xml");
+
+            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
+
+            node.SetElementValue("Category", newCategoryName);
+
+            doc.Save("podList.xml");
+        }
+
+        public static void UpdateNameXml(string currentName, string newName, string podTitle)
+        {
+            var doc = XDocument.Load("podList.xml");
+            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
+
+            node.SetElementValue("Name", newName);
+
+            doc.Save("podList.xml");
+        }
+
+
+        public static void DeletePodXml(string podTitle)
+        {
+            var doc = XDocument.Load("podList.xml");
+            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).ToList();
+
+            foreach (var podd in node)
+            {
+                podd.Remove();
+            }
+
+            doc.Save("podList.xml");
+        }
+
     }
 }

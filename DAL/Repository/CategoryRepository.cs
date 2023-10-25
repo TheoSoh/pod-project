@@ -7,7 +7,7 @@ using Models;
 
 namespace DAL.Repository
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : ICategoryRepository<Pod>
     {
         List<Category> categoryList;
         Serializer<Category> serializer;
@@ -16,16 +16,6 @@ namespace DAL.Repository
         {
             categoryList = new List<Category>();
             serializer = new Serializer<Category>(nameof(categoryList));
-        }
-
-        public List<Category> GetAll()
-        {
-            throw new Exception();
-        }
-
-        public void Update()
-        {
-            throw new Exception();
         }
 
         public void Delete(string category)
@@ -44,22 +34,6 @@ namespace DAL.Repository
             ReaderWriterTxt.UpdateCategoryName(categoryName,newCategoryName);
         }
 
-        
-        public void Add(Category item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Create(Category item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<string> FetchAllCategories()
         {
             return ReaderWriterTxt.txtReader();
@@ -70,7 +44,15 @@ namespace DAL.Repository
             ReaderWriterTxt.txtWriter();
         }
 
+        public void UpdateCategoryXml(string categoryName,string newCategoryName, string podTitle)
+        {
+            RssReader.UpdateCategoryXml(newCategoryName,newCategoryName,podTitle);
+        }
 
+        public void UpdateNameXml(string currentName,string newName,string podTitle)
+        {
+            RssReader.UpdateNameXml(currentName,newName,podTitle);
+        }
 
         public void AddNewCategories(string newCategory)
         {
@@ -81,5 +63,8 @@ namespace DAL.Repository
         {
             RssReader.UpdateXml(categoryName, newCategoryName);
         }
+
+       
     }
+
 }
