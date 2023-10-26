@@ -19,6 +19,7 @@ namespace PodProject
     {
         PodController podController;
         CategoryController categoryController;
+        ValidationController validationController;
         string selectedPodTitle;
         ListViewItem selectedItem;
         public LibraryPage()
@@ -26,6 +27,7 @@ namespace PodProject
             InitializeComponent();
             podController = new PodController();
             categoryController = new CategoryController();
+            validationController = new ValidationController();
             List<string> categorys = categoryController.ReadAllCategorys();
             foreach (string category in categorys)
             {
@@ -71,6 +73,7 @@ namespace PodProject
                 {
                     listBoxEpisodes.Items.Add(anEpisode.Title);
                 }
+                txtBoxDescription.Clear();
             }
         }
 
@@ -106,12 +109,12 @@ namespace PodProject
             {
                 string newName = txtChangeName.Text;
                 Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
-                if (!ValidationController.CheckIfStringIsEmpty(newName))
+                if (!validationController.CheckIfStringIsEmpty(newName))
                 {
                     categoryController.UpdateNameXml(podToChange.Name, newName, podToChange.Title);
                     FillPodTable();
                     txtChangeName.Clear();
-                    var confirmResult = MessageBox.Show("Namnet på den valda poden har ändrats!", "", MessageBoxButtons.OK);
+                    var confirmResult = MessageBox.Show("Namnet på den valda podden har ändrats!", "", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -131,6 +134,8 @@ namespace PodProject
 
                 podController.DeletePodXml(podToChange.Title);
                 FillPodTable();
+                listBoxEpisodes.Items.Clear();
+                txtBoxDescription.Clear();
 
             }
         }
