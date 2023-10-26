@@ -16,12 +16,14 @@ namespace PodProject
     {
         PodController controller;
         CategoryController categoryController;
+        ValidationController validationController;
         
         public AddPodPage()
         {
             InitializeComponent();
             controller = new PodController();
             categoryController = new CategoryController();
+            validationController = new ValidationController();
             List<string> categorys = categoryController.ReadAllCategorys();
             foreach (string category in categorys)
             {
@@ -39,14 +41,14 @@ namespace PodProject
         {
             string urlText = txtUrl.Text;
             string nameText = txtName.Text;
-            if((!ValidationController.CheckIfStringIsEmpty(urlText)) && (!ValidationController.CheckIfStringIsEmpty(nameText)))
+            if((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (validationController.CheckIfNameExist(nameText)))
             {
                 controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
                 var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
             }
             else
             {
-                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda!", "", MessageBoxButtons.OK);
+                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn finns redan!", "", MessageBoxButtons.OK);
             }
         }
     }

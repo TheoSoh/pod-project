@@ -72,7 +72,7 @@ namespace DAL.Repository
 
         public Pod GetByPodTitle(string title)
         {
-            return GetAll().FirstOrDefault(p => p.Title.Equals(title));
+            return GetAll().FirstOrDefault(pod => pod.Title.Equals(title));
         }
 
        public void update(int index, Pod pod)

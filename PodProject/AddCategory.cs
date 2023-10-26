@@ -15,11 +15,13 @@ namespace PodProject
     public partial class AddCategory : Form
     {
         CategoryController categoryController;
+        ValidationController validationController;
         
         public AddCategory()
         {
             InitializeComponent();
             categoryController = new CategoryController();
+            validationController = new ValidationController();
             FillCombobox();
         }
 
@@ -31,7 +33,8 @@ namespace PodProject
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string newCategory = txtNewCategory.Text;
-            if (!ValidationController.CheckIfStringIsEmpty(newCategory))
+            if ((!validationController.CheckIfStringIsEmpty(newCategory)) && (!validationController.CheckIfCategoryExist(newCategory))) 
+            
             {
                 categoryController.addNewCategoryToTxt(newCategory);
                 cmbSelectCategory.Items.Clear();
@@ -40,7 +43,7 @@ namespace PodProject
             }
             else
             {
-                var confirmResult = MessageBox.Show("Den nya kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
+                var confirmResult = MessageBox.Show("Den nya kategorin måste ha ett namn och kan inte vara ett namn som redan finns!", "", MessageBoxButtons.OK);
             }
 
 
@@ -80,7 +83,7 @@ namespace PodProject
             string categoryName = cmbSelectCategory.SelectedItem.ToString();
             string newCategoryName = txtNewNameCategory.Text;
 
-            if (!ValidationController.CheckIfStringIsEmpty(newCategoryName)) { 
+            if (!validationController.CheckIfStringIsEmpty(newCategoryName)) { 
 
             categoryController.ReplaceCategoryName(categoryName, newCategoryName);
 
