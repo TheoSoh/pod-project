@@ -28,7 +28,7 @@ namespace DAL.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new Exception("", ex);
             }
             return podListDeserialized;
         }

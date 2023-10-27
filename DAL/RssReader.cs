@@ -145,7 +145,7 @@ namespace DAL
             }
         }
 
-        public static void UpdateCategoryXml(string currentCategoryName, string newCategoryName, string podTitle)
+        public static void Update(string currentCategoryName, string newCategoryName, string podTitle)
         {
             try
             {

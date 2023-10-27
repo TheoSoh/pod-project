@@ -85,7 +85,7 @@ namespace PodProject
 
             if (!validationController.CheckIfStringIsEmpty(newCategoryName)) { 
 
-            categoryController.ReplaceCategoryName(categoryName, newCategoryName);
+            categoryController.Update(categoryName, newCategoryName);
 
             categoryController.ReplaceCategoryNameXml(categoryName, newCategoryName);
             cmbSelectCategory.Items.Clear();
