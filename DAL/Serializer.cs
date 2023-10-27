@@ -35,20 +35,27 @@ namespace DAL
         public List<T> Deserialize()
         {
             List<T> list = new List<T>();
-            if (File.Exists(path))
+            try
             {
-                try
+
+                if (File.Exists(path))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                    using (FileStream xmlIn = new FileStream(path, FileMode.Open, FileAccess.Read))
+                    try
                     {
-                        list = (List<T>)xmlSerializer.Deserialize(xmlIn);
+                        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+                        using (FileStream xmlIn = new FileStream(path, FileMode.Open, FileAccess.Read))
+                        {
+                            list = (List<T>)xmlSerializer.Deserialize(xmlIn);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Error: {e.Message}");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
-                }
+            }catch (Exception e) 
+            {
+                Console.WriteLine(e.Message);
             }
             return list;
         }
