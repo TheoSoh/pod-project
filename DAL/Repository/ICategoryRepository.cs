@@ -13,7 +13,7 @@ namespace DAL.Repository
         public void Update(string categoryName, string newCategoryName);
         public List<string> FetchAllCategories();
         public void CreateDefaultCategories();
-        public void UpdateCategoryXml(string categoryName, string newCategoryName, string podTitle);
+        public void Update(string categoryName, string newCategoryName, string podTitle);
         public void UpdateNameXml(string currentName, string newName, string podTitle);
         public void AddNewCategories(string newCategory);
         public void UpdateInXml(string categoryName, string newCategoryName);

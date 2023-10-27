@@ -100,7 +100,7 @@ namespace DAL
             }
         }
 
-        public static void UpdateCategoryName (string categoryName, string newCategoryName)
+        public static void Update (string categoryName, string newCategoryName)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace DAL
 
             }catch(Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new Exception("", e);
             }
 
         }

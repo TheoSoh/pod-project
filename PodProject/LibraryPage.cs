@@ -49,8 +49,8 @@ namespace PodProject
             }
         }
 
-       
-        
+
+
         private void FillPodTable()
         {
             listViewPods.Items.Clear();
@@ -61,7 +61,7 @@ namespace PodProject
                 listViewPods.Items.Add(item);
             }
         }
-        
+
         private void listViewPods_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxEpisodes.Items.Clear();
@@ -97,7 +97,7 @@ namespace PodProject
                 Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
 
 
-                categoryController.UpdateCategoryXml(podToChange.Category, selectedPodCategoryCmc, podToChange.Title);
+                categoryController.Update(podToChange.Category, selectedPodCategoryCmc, podToChange.Title);
                 FillPodTable();
                 cmbChangeCategory.SelectedIndex = -1;
             }
