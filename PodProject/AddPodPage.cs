@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL.Controllers;
 using BLL;
+using System.Diagnostics.Eventing.Reader;
 
 namespace PodProject
 {
@@ -41,14 +42,15 @@ namespace PodProject
         {
             string urlText = txtUrl.Text;
             string nameText = txtName.Text;
-            if((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (validationController.CheckIfNameExist(nameText)))
+            if((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
+            
             {
                 controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
                 var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
             }
             else
             {
-                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn finns redan!", "", MessageBoxButtons.OK);
+                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
             }
         }
     }
