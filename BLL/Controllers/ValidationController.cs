@@ -49,10 +49,18 @@ namespace BLL.Controllers
 
         public bool CheckIfNameExist (string name) 
         { 
-            var selectName = from aName in podRepo.GetAll()
-                             where aName.Equals(name)
-                             select aName;
+            var selectName = from aPod in podRepo.GetAll()
+                             where aPod.Name.Equals(name)
+                             select aPod.Name;
             return selectName.Any();
+        }
+
+        public bool CheckIfUrlExist(string url)
+        {
+            var selectUrl = from aPod in podRepo.GetAll()
+                            where aPod.Url.Equals(url)
+                            select aPod.Url;
+            return selectUrl.Any();
         }
     }
 }
