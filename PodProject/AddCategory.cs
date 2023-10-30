@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 
 namespace PodProject
 {
@@ -36,18 +37,27 @@ namespace PodProject
             {
                 string newCategory = txtNewCategory.Text;
            
-                if ((!validationController.CheckIfStringIsEmpty(newCategory)) && (!validationController.CheckIfCategoryExist(newCategory)))
-
+                if (validationController.CheckIfStringIsEmpty(newCategory))
                 {
+                    MessageBox.Show("Den nya kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
+                    return;
+                }
+                    
+                        
+                        
+                 if(validationController.CheckIfCategoryExist(newCategory))
+                    {
+                    MessageBox.Show("Namnet på kategorin finns redan! Vänligen välj ett annat namn", "", MessageBoxButtons.OK);
+                    return;
+                    }
+
+                
                     categoryController.addNewCategoryToTxt(newCategory);
                     cmbSelectCategory.Items.Clear();
                     FillCombobox();
                     var confirmResult = MessageBox.Show("Ny kategori har lagts till!", "", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    var confirmResult = MessageBox.Show("Den nya kategorin måste ha ett namn och kan inte vara ett namn som redan finns!", "", MessageBoxButtons.OK);
-                }
+                
+                
             }catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -114,21 +124,27 @@ namespace PodProject
                 string newCategoryName = txtNewNameCategory.Text;
 
             
-                if ((!validationController.CheckIfStringIsEmpty(newCategoryName)) && (!validationController.CheckIfStringIsEmpty(categoryName)))
+                if (validationController.CheckIfStringIsEmpty(categoryName))
                 {
-                
+                    MessageBox.Show("Vänligen välj en kategori att ändra namn på!", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+
+                if (validationController.CheckIfStringIsEmpty(newCategoryName))
+                {
+                    MessageBox.Show("Kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
+                    return;
+
+                }
 
                     categoryController.Update(categoryName, newCategoryName);
 
                     categoryController.ReplaceCategoryNameXml(categoryName, newCategoryName);
                     cmbSelectCategory.Items.Clear();
                     FillCombobox();
-                    var confirmResult = MessageBox.Show("Den valda kategorin har nu ett nytt namn!", "", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    var confirmResult = MessageBox.Show("Kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
-                }
+                var confirmResult = MessageBox.Show("Den valda kategorin har nu ett nytt namn!", "", MessageBoxButtons.OK);
+                
 
             } 
             catch (Exception ex)

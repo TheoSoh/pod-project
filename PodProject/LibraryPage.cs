@@ -40,9 +40,9 @@ namespace PodProject
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            listViewPods.Items.Clear();
             try
             {
+                listViewPods.Items.Clear();
                 List<Pod> podList = podController.podHasCategory(cmbCategories.Text);
 
                 foreach (Pod pod in podList)

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using DAL.Repository;
 using Models;
 using DAL;
-
-
-
+using System.ServiceModel.Syndication;
+using System.Xml;
+using System.Diagnostics;
 
 namespace BLL.Controllers
 {
@@ -17,7 +17,6 @@ namespace BLL.Controllers
 
         IPodRepository<Pod> podRepo;
         CategoryRepository categoryRepo;
-
 
         public ValidationController()
         {
@@ -65,6 +64,22 @@ namespace BLL.Controllers
             return selectUrl.Any();
         }
 
+        public bool TryParseFeed(string url)
+        {
+            try
+            {
+                SyndicationFeed syndicationFeed = SyndicationFeed.Load(XmlReader.Create(url));
 
+                foreach(SyndicationItem item in syndicationFeed.Items)
+                {
+                    Debug.Print(item.Title.Text);
+                }
+                return true;
+            }
+            catch (Exception ex) 
+            { 
+                return false;
+            }
+        }
     }
 }
