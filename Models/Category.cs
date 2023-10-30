@@ -11,8 +11,6 @@ namespace Models
     {
         public string CategoryName { get; set; }
 
-        public List<Pod> podList { get; set; }
-
         public Category(string categoryName)
         {
             CategoryName = categoryName;

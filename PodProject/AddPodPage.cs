@@ -40,23 +40,36 @@ namespace PodProject
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
-                string urlText = txtUrl.Text;
-                string nameText = txtName.Text;
-
-                if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
-
-                {
-                    controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
-                    var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
-                    await Task.Delay(1000);
-                }
-
-                else
-                {
-
-                    var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
-
-                }
+            string urlText = txtUrl.Text;
+            string nameText = txtName.Text;
+            if (validationController.CheckIfStringIsEmpty(urlText))
+            {
+                MessageBox.Show("Vänligen fyll i en url!", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (validationController.CheckIfStringIsEmpty(nameText))
+            {
+                MessageBox.Show("Vänligen fyll i namn!", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (validationController.CheckIfUrlExist(urlText))
+            {
+                MessageBox.Show("Denna podd finns redan!", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (validationController.CheckIfNameExist(nameText))
+            {
+                MessageBox.Show("Namnet du angett finns redan!", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (!validationController.TryParseFeed(urlText))
+            {
+                MessageBox.Show("Ogiltigt URL format!", "", MessageBoxButtons.OK);
+                return;
+            }
+            await Task.Delay(1000);
+            controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+            MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
         }
     }
 }

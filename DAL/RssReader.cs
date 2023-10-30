@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using HtmlAgilityPack;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,24 +51,38 @@ namespace DAL
             List<Episode> episodes = new List<Episode>();
             
 
-                SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
-                if (synFeed != null)
+            SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
+            if (synFeed != null)
+            {
+                foreach (SyndicationItem item in synFeed.Items)
                 {
-                    foreach (SyndicationItem item in synFeed.Items)
-                    {
-                        Episode episode = new Episode();
-                        episode.Title = item.Title.Text;
-                        episode.Description = item.Summary.Text;
-                        episode.PublishDate = item.PublishDate.ToString();
-                        episode.EpisodeUrl = item.Links[0].Uri.ToString();
+                    Episode episode = new Episode();
+                    episode.Title = item.Title.Text;
 
-                        episodes.Add(episode);
+                    var summary = item.Summary?.Text;
+                    var content = item.Content?.ToString();
+                    if (summary != null)
+                    {
+                        HtmlDocument doc = new HtmlDocument();
+                        doc.LoadHtml(summary);
+                        episode.Description = doc.DocumentNode.InnerText;
                     }
+                    else if (content != null)
+                    {
+                        HtmlDocument doc = new HtmlDocument();
+                        doc.LoadHtml(content);
+                        episode.Description = doc.DocumentNode.InnerText.ToString();
+                    }
+
+                    episode.PublishDate = item.PublishDate.ToString();
+                    episode.EpisodeUrl = item.Links[0].Uri.ToString();
+                    episodes.Add(episode);
                 }
-                else
-                {
-                    Console.WriteLine("Error message: Unable to fetch episodes.");
-                }
+            }
+            else
+            {
+                Console.WriteLine("Error message: Unable to fetch episodes.");
+            }
             return episodes;
         }
 
