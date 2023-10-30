@@ -18,25 +18,18 @@ namespace DAL
 
         public void Serialize(List<T> list)
         {
-            try
-            {
+           
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
                 using (FileStream xmlOut = new FileStream(path, FileMode.Create, FileAccess.Write))
                 {
                     xmlSerializer.Serialize(xmlOut, list);
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
         }
 
         public List<T> Deserialize()
         {
             List<T> list = new List<T>();
-            try
-            {
+           
 
                 if (File.Exists(path))
                 {
@@ -53,10 +46,6 @@ namespace DAL
                         Console.WriteLine($"Error: {e.Message}");
                     }
                 }
-            }catch (Exception e) 
-            {
-                Console.WriteLine(e.Message);
-            }
             return list;
         }
 

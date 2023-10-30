@@ -16,8 +16,7 @@ namespace DAL
         {
             string[] lines = { "","Komedi", "Historia", "Crime", "Sport" };
 
-            try
-            {
+           
 
                 using (FileStream fileStream = new FileStream("Category.txt", FileMode.OpenOrCreate, FileAccess.Write))
                 {
@@ -27,18 +26,12 @@ namespace DAL
                             writer.WriteLine(line);
                     }
                 }
-            } catch (IOException e) 
-            {
-                Console.WriteLine(e.Message);
-            }
 
         }
 
         public static void txtWriterNew(string newCategory)
         {
 
-            try
-            {
                 using (FileStream fileStream = new FileStream("Category.txt", FileMode.Append, FileAccess.Write))
                 {
                     using (StreamWriter writer = new StreamWriter(fileStream))
@@ -47,18 +40,13 @@ namespace DAL
 
                     }
                 }
-            }catch (IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
 
         }
 
         public static List<string> txtReader()
         {
             List<string> result = new List<string>();
-            try
-            {
+            
               using (FileStream fileStream = new FileStream("Category.txt", FileMode.Open, FileAccess.Read))
                 {
                     using (StreamReader reader = new StreamReader(fileStream))
@@ -75,35 +63,24 @@ namespace DAL
                     }
                 
               }
-
-            } catch(IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
             return result;
         }
 
 
         public static void DeleteCategoryFromFile (string category)
         {
-            try
-            {
+            
                 var categories = File.ReadAllLines("Category.txt").ToList();
                 if (categories.Contains(category))
                 {
                     categories.Remove(category);
                     File.WriteAllLines("Category.txt", categories);
                 }
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
         }
 
         public static void Update (string categoryName, string newCategoryName)
         {
-            try
-            {
+            
                 var categories = File.ReadAllText("Category.txt");
 
 
@@ -111,10 +88,6 @@ namespace DAL
 
                 File.WriteAllText("Category.txt", categories);
 
-            }catch(Exception e)
-            {
-                throw new Exception("", e);
-            }
 
         }
 

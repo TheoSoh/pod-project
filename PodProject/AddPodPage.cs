@@ -18,7 +18,7 @@ namespace PodProject
         PodController controller;
         CategoryController categoryController;
         ValidationController validationController;
-        
+
         public AddPodPage()
         {
             InitializeComponent();
@@ -42,22 +42,21 @@ namespace PodProject
         {
             string urlText = txtUrl.Text;
             string nameText = txtName.Text;
-            try
+
+            validationController.CheckIfUrlIsCorrect(urlText);
+
+            if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
+
+            {
+                controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+                var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
+                await Task.Delay(1000);
+            }
+
+             else 
             {
 
-                if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
-
-                {
-                    controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
-                    var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
-                    await Task.Delay(1000);
-                }
-
-            } catch (Exception ex)
-            {
-           
-                    //var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
-                    throw new Exception("", ex);
+                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
                 
             }
         }

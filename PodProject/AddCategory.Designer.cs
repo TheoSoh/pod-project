@@ -55,7 +55,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(111, 200);
+            label2.Location = new Point(39, 192);
             label2.Name = "label2";
             label2.Size = new Size(230, 26);
             label2.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // txtNewCategory
             // 
-            txtNewCategory.Location = new Point(361, 192);
+            txtNewCategory.Location = new Point(282, 179);
             txtNewCategory.Name = "txtNewCategory";
             txtNewCategory.Size = new Size(234, 39);
             txtNewCategory.TabIndex = 2;
@@ -89,9 +89,9 @@
             // 
             // txtNewNameCategory
             // 
-            txtNewNameCategory.Location = new Point(701, 349);
+            txtNewNameCategory.Location = new Point(683, 349);
             txtNewNameCategory.Name = "txtNewNameCategory";
-            txtNewNameCategory.Size = new Size(200, 39);
+            txtNewNameCategory.Size = new Size(225, 39);
             txtNewNameCategory.TabIndex = 5;
             // 
             // label4
@@ -115,7 +115,7 @@
             // btnChangeNameCat
             // 
             btnChangeNameCat.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnChangeNameCat.Location = new Point(701, 449);
+            btnChangeNameCat.Location = new Point(697, 449);
             btnChangeNameCat.Name = "btnChangeNameCat";
             btnChangeNameCat.Size = new Size(185, 46);
             btnChangeNameCat.TabIndex = 8;
@@ -126,7 +126,7 @@
             // btnDeleteCategory
             // 
             btnDeleteCategory.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDeleteCategory.Location = new Point(282, 449);
+            btnDeleteCategory.Location = new Point(323, 444);
             btnDeleteCategory.Name = "btnDeleteCategory";
             btnDeleteCategory.Size = new Size(150, 46);
             btnDeleteCategory.TabIndex = 9;
@@ -137,7 +137,7 @@
             // btnAddCategory
             // 
             btnAddCategory.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAddCategory.Location = new Point(689, 188);
+            btnAddCategory.Location = new Point(569, 172);
             btnAddCategory.Name = "btnAddCategory";
             btnAddCategory.Size = new Size(150, 46);
             btnAddCategory.TabIndex = 10;
