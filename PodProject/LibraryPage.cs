@@ -39,13 +39,21 @@ namespace PodProject
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             listViewPods.Items.Clear();
-            List<Pod> podList = podController.podHasCategory(cmbCategories.Text);
-            foreach (Pod pod in podList)
+            try
             {
-                string[] podInfo = { pod.Name, pod.Title, pod.Category, pod.Episodes.Count.ToString() };
-                ListViewItem item = new ListViewItem(podInfo);
-                listViewPods.Items.Add(item);
+                List<Pod> podList = podController.podHasCategory(cmbCategories.Text);
+
+                foreach (Pod pod in podList)
+                {
+                    string[] podInfo = { pod.Name, pod.Title, pod.Category, pod.Episodes.Count.ToString() };
+                    ListViewItem item = new ListViewItem(podInfo);
+                    listViewPods.Items.Add(item);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -73,6 +81,7 @@ namespace PodProject
                 {
                     listBoxEpisodes.Items.Add(anEpisode.Title);
                 }
+               
                 txtBoxDescription.Clear();
             }
         }
