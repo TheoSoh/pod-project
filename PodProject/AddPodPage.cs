@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL.Controllers;
 using BLL;
+using System.Diagnostics.Eventing.Reader;
 
 namespace PodProject
 {
@@ -16,12 +17,14 @@ namespace PodProject
     {
         PodController controller;
         CategoryController categoryController;
+        ValidationController validationController;
         
         public AddPodPage()
         {
             InitializeComponent();
             controller = new PodController();
             categoryController = new CategoryController();
+            validationController = new ValidationController();
             List<string> categorys = categoryController.ReadAllCategorys();
             foreach (string category in categorys)
             {
@@ -35,18 +38,27 @@ namespace PodProject
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             string urlText = txtUrl.Text;
             string nameText = txtName.Text;
-            if((!ValidationController.CheckIfStringIsEmpty(urlText)) && (!ValidationController.CheckIfStringIsEmpty(nameText)))
+            try
             {
-                controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
-                var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
-            }
-            else
+
+                if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
+
+                {
+                    controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+                    var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
+                    await Task.Delay(1000);
+                }
+
+            } catch (Exception ex)
             {
-                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda!", "", MessageBoxButtons.OK);
+           
+                    //var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
+                    throw new Exception("", ex);
+                
             }
         }
     }

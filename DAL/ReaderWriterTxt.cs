@@ -16,68 +16,105 @@ namespace DAL
         {
             string[] lines = { "","Komedi", "Historia", "Crime", "Sport" };
 
-            using (FileStream fileStream = new FileStream("Category.txt", FileMode.OpenOrCreate, FileAccess.Write))
+            try
             {
-                using (StreamWriter writer = new StreamWriter(fileStream))
+
+                using (FileStream fileStream = new FileStream("Category.txt", FileMode.OpenOrCreate, FileAccess.Write))
                 {
-                    foreach (string line in lines)
-                        writer.WriteLine(line);
+                    using (StreamWriter writer = new StreamWriter(fileStream))
+                    {
+                        foreach (string line in lines)
+                            writer.WriteLine(line);
+                    }
                 }
+            } catch (IOException e) 
+            {
+                Console.WriteLine(e.Message);
             }
 
         }
 
         public static void txtWriterNew(string newCategory)
         {
-            using (FileStream fileStream = new FileStream("Category.txt", FileMode.Append, FileAccess.Write))
+
+            try
             {
-                using (StreamWriter writer = new StreamWriter(fileStream))
+                using (FileStream fileStream = new FileStream("Category.txt", FileMode.Append, FileAccess.Write))
                 {
-                    writer.WriteLine(newCategory);
-                  
+                    using (StreamWriter writer = new StreamWriter(fileStream))
+                    {
+                        writer.WriteLine(newCategory);
+
+                    }
                 }
+            }catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
             }
+
         }
 
         public static List<string> txtReader()
         {
-            using (FileStream fileStream = new FileStream("Category.txt", FileMode.Open, FileAccess.Read))
+            List<string> result = new List<string>();
+            try
             {
-                using (StreamReader reader = new StreamReader(fileStream))
+              using (FileStream fileStream = new FileStream("Category.txt", FileMode.Open, FileAccess.Read))
                 {
-                    List<string> result = new List<string>();
-                    string line = reader.ReadLine();
-                    while (line != null)
+                    using (StreamReader reader = new StreamReader(fileStream))
                     {
-                        line = reader.ReadLine();
-                        string category = new string(line);
-                        result.Add(category);
+                        
+                        string line = reader.ReadLine();
+                        while (line != null)
+                        {
+                            line = reader.ReadLine();
+                            string category = new string(line);
+                            result.Add(category);
+                        }
+                       
                     }
-                    return result;
-                }
+                
+              }
+
+            } catch(IOException e)
+            {
+                Console.WriteLine(e.Message);
             }
+            return result;
         }
 
 
         public static void DeleteCategoryFromFile (string category)
         {
-            var categories = File.ReadAllLines("Category.txt").ToList();
-            if(categories.Contains(category))
+            try
             {
-                categories.Remove(category);
-                File.WriteAllLines("Category.txt", categories);
+                var categories = File.ReadAllLines("Category.txt").ToList();
+                if (categories.Contains(category))
+                {
+                    categories.Remove(category);
+                    File.WriteAllLines("Category.txt", categories);
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
-        public static void UpdateCategoryName (string categoryName, string newCategoryName)
+        public static void Update (string categoryName, string newCategoryName)
         {
-            var categories = File.ReadAllText("Category.txt");
-            
-            
-             categories = categories.Replace(categoryName,newCategoryName);
+            try
+            {
+                var categories = File.ReadAllText("Category.txt");
 
-            File.WriteAllText("Category.txt", categories);
-            
+
+                categories = categories.Replace(categoryName, newCategoryName);
+
+                File.WriteAllText("Category.txt", categories);
+
+            }catch(Exception e)
+            {
+                throw new Exception("", e);
+            }
 
         }
 

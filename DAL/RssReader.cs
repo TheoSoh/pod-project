@@ -16,14 +16,22 @@ namespace DAL
         public static string FetchPodTitleFromUrl(string rssUrl)
         {
             string podTitle = "";
-            SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
-            if (synFeed != null)
+            try
             {
-                podTitle = synFeed.Title.Text;
-            }
-            else
+                
+                SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
+                if (synFeed != null)
+                {
+                    podTitle = synFeed.Title.Text;
+                }
+                else
+                {
+                    Console.WriteLine("Error message: Unable to fetch the pod's title.");
+                }
+                
+            }catch(Exception e)
             {
-                Console.WriteLine("Error message: Unable to fetch the pod's title.");
+                Console.WriteLine(e.Message);
             }
             return podTitle;
         }
@@ -31,14 +39,20 @@ namespace DAL
         public static string FetchPodDescriptionFromUrl(string rssUrl)
         {
             string podDescription = "";
-            SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
-            if (synFeed != null)
+            try
             {
-                podDescription = synFeed.Description.Text;
-            }
-            else
+                SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
+                if (synFeed != null)
+                {
+                    podDescription = synFeed.Description.Text;
+                }
+                else
+                {
+                    Console.WriteLine("Error message: Unable to fetch the pod's description.");
+                }
+            } catch(Exception e)
             {
-                Console.WriteLine("Error message: Unable to fetch the pod's description.");
+                Console.WriteLine(e.Message);
             }
             return podDescription;
         }
@@ -46,23 +60,30 @@ namespace DAL
         public static List<Episode> FetchEpisodesFromUrl(string rssUrl)
         {
             List<Episode> episodes = new List<Episode>();
-            SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
-            if (synFeed != null)
+            try
             {
-                foreach (SyndicationItem item in synFeed.Items)
-                {
-                    Episode episode = new Episode();
-                    episode.Title = item.Title.Text;
-                    episode.Description = item.Summary.Text;
-                    episode.PublishDate = item.PublishDate.ToString();
-                    episode.EpisodeUrl = item.Links[0].Uri.ToString();
 
-                    episodes.Add(episode);
+                SyndicationFeed synFeed = LoadSyndicationFeed(rssUrl);
+                if (synFeed != null)
+                {
+                    foreach (SyndicationItem item in synFeed.Items)
+                    {
+                        Episode episode = new Episode();
+                        episode.Title = item.Title.Text;
+                        episode.Description = item.Summary.Text;
+                        episode.PublishDate = item.PublishDate.ToString();
+                        episode.EpisodeUrl = item.Links[0].Uri.ToString();
+
+                        episodes.Add(episode);
+                    }
                 }
-            }
-            else
+                else
+                {
+                    Console.WriteLine("Error message: Unable to fetch episodes.");
+                }
+            } catch(Exception e)
             {
-                Console.WriteLine("Error message: Unable to fetch episodes.");
+                Console.WriteLine(e.Message);
             }
             return episodes;
         }
@@ -86,65 +107,98 @@ namespace DAL
 
         public static void UpdateXml (string categoryName, string newCategoryName)
         {
-            var doc = XDocument.Load("podList.xml");
-
-            var node = doc.Descendants("Pod").Where(pod =>(string)pod.Element("Category") == categoryName);
-
-            foreach (var podd in node)
+            try
             {
-                podd.SetElementValue("Category", newCategoryName);
-            }
-            
+                var doc = XDocument.Load("podList.xml");
 
-            doc.Save("podList.xml");
+                var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Category") == categoryName);
+
+                foreach (var podd in node)
+                {
+                    podd.SetElementValue("Category", newCategoryName);
+                }
+
+
+                doc.Save("podList.xml");
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public static void DeleteCategoryXml (string categoryName)
         {
-            var doc = XDocument.Load("podList.xml");
-            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Category") == categoryName);
-
-            foreach(var podd in node)
+            try
             {
-                podd.SetElementValue("Category", "");
-            }
+                var doc = XDocument.Load("podList.xml");
+                var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Category") == categoryName);
 
-            doc.Save("podList.xml");
+                foreach (var podd in node)
+                {
+                    podd.SetElementValue("Category", "");
+                }
+
+                doc.Save("podList.xml");
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
-        public static void UpdateCategoryXml(string currentCategoryName, string newCategoryName, string podTitle)
+        public static void Update(string currentCategoryName, string newCategoryName, string podTitle)
         {
-            var doc = XDocument.Load("podList.xml");
+            try
+            {
+                var doc = XDocument.Load("podList.xml");
 
-            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
+                var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
 
-            node.SetElementValue("Category", newCategoryName);
+                node.SetElementValue("Category", newCategoryName);
 
-            doc.Save("podList.xml");
+                doc.Save("podList.xml");
+            }catch (Exception e) 
+            { 
+                Console.WriteLine(e.Message);
+            }
         }
 
         public static void UpdateNameXml(string currentName, string newName, string podTitle)
         {
-            var doc = XDocument.Load("podList.xml");
-            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
+            try
+            {
+                var doc = XDocument.Load("podList.xml");
+                var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).FirstOrDefault();
 
-            node.SetElementValue("Name", newName);
+                node.SetElementValue("Name", newName);
 
-            doc.Save("podList.xml");
+                doc.Save("podList.xml");
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
 
         public static void DeletePodXml(string podTitle)
         {
-            var doc = XDocument.Load("podList.xml");
-            var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).ToList();
-
-            foreach (var podd in node)
+            try
             {
-                podd.Remove();
+
+                var doc = XDocument.Load("podList.xml");
+                var node = doc.Descendants("Pod").Where(pod => (string)pod.Element("Title") == podTitle).ToList();
+
+                foreach (var podd in node)
+                {
+                    podd.Remove();
+                }
+
+                doc.Save("podList.xml");
+
+            }catch(Exception e)
+            { 
+                Console.WriteLine(e.Message); 
             }
 
-            doc.Save("podList.xml");
         }
 
     }

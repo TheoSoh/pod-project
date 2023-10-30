@@ -31,7 +31,7 @@ namespace DAL.Repository
 
         public void Update(string categoryName,string newCategoryName)
         {
-            ReaderWriterTxt.UpdateCategoryName(categoryName,newCategoryName);
+            ReaderWriterTxt.Update(categoryName,newCategoryName);
         }
 
         public List<string> FetchAllCategories()
@@ -44,9 +44,9 @@ namespace DAL.Repository
             ReaderWriterTxt.txtWriter();
         }
 
-        public void UpdateCategoryXml(string categoryName,string newCategoryName, string podTitle)
+        public void Update(string categoryName,string newCategoryName, string podTitle)
         {
-            RssReader.UpdateCategoryXml(newCategoryName,newCategoryName,podTitle);
+            RssReader.Update(newCategoryName,newCategoryName,podTitle);
         }
 
         public void UpdateNameXml(string currentName,string newName,string podTitle)

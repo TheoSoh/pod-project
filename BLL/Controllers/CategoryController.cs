@@ -41,7 +41,7 @@ namespace BLL.Controllers
             categoryRepository.Delete(categoryName);
         }
 
-        public void ReplaceCategoryName (string categoryName, string newCategoryName)
+        public void Update (string categoryName, string newCategoryName)
         {
             categoryRepository.Update(categoryName, newCategoryName);
         }
@@ -56,9 +56,9 @@ namespace BLL.Controllers
             categoryRepository.DeleteCategoryXml(categoryName);
         }
 
-        public void UpdateCategoryXml(string categoryName, string newCategoryName, string podTitle)
+        public void Update(string categoryName, string newCategoryName, string podTitle)
         {
-            categoryRepository.UpdateCategoryXml(categoryName, newCategoryName, podTitle);
+            categoryRepository.Update(categoryName, newCategoryName, podTitle);
         }
 
         public void UpdateNameXml (string currentName,string newName, string podTitle)
