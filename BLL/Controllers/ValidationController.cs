@@ -12,7 +12,7 @@ using DAL;
 
 namespace BLL.Controllers
 {
-    public class ValidationController : Exception
+    public class ValidationController 
     {
 
         IPodRepository<Pod> podRepo;
@@ -31,7 +31,7 @@ namespace BLL.Controllers
             if ((text == null) || (text == ""))
             {
                 return true;
-                throw new Exception("Textrutan är tom");
+                
             }
             else
             {

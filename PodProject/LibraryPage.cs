@@ -61,91 +61,131 @@ namespace PodProject
 
         private void FillPodTable()
         {
-            listViewPods.Items.Clear();
-            foreach (Pod pod in podController.GetPodList())
+            try
             {
-                string[] podInfo = { pod.Name, pod.Title, pod.Category, pod.Episodes.Count.ToString() };
-                ListViewItem item = new ListViewItem(podInfo);
-                listViewPods.Items.Add(item);
+                listViewPods.Items.Clear();
+                foreach (Pod pod in podController.GetPodList())
+                {
+                    string[] podInfo = { pod.Name, pod.Title, pod.Category, pod.Episodes.Count.ToString() };
+                    ListViewItem item = new ListViewItem(podInfo);
+                    listViewPods.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void listViewPods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxEpisodes.Items.Clear();
-            if (listViewPods.SelectedItems.Count > 0)
+            try
             {
-                selectedItem = listViewPods.SelectedItems[0];
-                selectedPodTitle = selectedItem.SubItems[1].Text;
-                foreach (Episode anEpisode in podController.GetPodByPodTitle(selectedPodTitle).Episodes)
+
+                listBoxEpisodes.Items.Clear();
+                if (listViewPods.SelectedItems.Count > 0)
                 {
-                    listBoxEpisodes.Items.Add(anEpisode.Title);
+                    selectedItem = listViewPods.SelectedItems[0];
+                    selectedPodTitle = selectedItem.SubItems[1].Text;
+                    foreach (Episode anEpisode in podController.GetPodByPodTitle(selectedPodTitle).Episodes)
+                    {
+                        listBoxEpisodes.Items.Add(anEpisode.Title);
+                    }
+
+                    txtBoxDescription.Clear();
                 }
-               
-                txtBoxDescription.Clear();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void listBoxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtBoxDescription.Text = "";
-            if (listBoxEpisodes.SelectedItems.Count > 0)
+            try
             {
-                string selectedEpisodeTitle = listBoxEpisodes.SelectedItem.ToString();
-                List<Episode> selectedPodsEpisodes = podController.GetPodByPodTitle(selectedPodTitle).Episodes;
-                Episode selectedEpisode = selectedPodsEpisodes.FirstOrDefault(e => e.Title.Equals(selectedEpisodeTitle));
-                txtBoxDescription.Text = selectedEpisode.Description;
+
+                txtBoxDescription.Text = "";
+                if (listBoxEpisodes.SelectedItems.Count > 0)
+                {
+                    string selectedEpisodeTitle = listBoxEpisodes.SelectedItem.ToString();
+                    List<Episode> selectedPodsEpisodes = podController.GetPodByPodTitle(selectedPodTitle).Episodes;
+                    Episode selectedEpisode = selectedPodsEpisodes.FirstOrDefault(e => e.Title.Equals(selectedEpisodeTitle));
+                    txtBoxDescription.Text = selectedEpisode.Description;
+                }
+            } catch(Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
             }
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            if (listViewPods.SelectedItems.Count > 0)
+            try
             {
-                string selectedPodCategoryCmc = cmbChangeCategory.SelectedItem.ToString();
-                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
+                if (listViewPods.SelectedItems.Count > 0)
+                {
+                    string selectedPodCategoryCmc = cmbChangeCategory.SelectedItem.ToString();
+                    Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
 
 
-                categoryController.Update(podToChange.Category, selectedPodCategoryCmc, podToChange.Title);
-                FillPodTable();
-                cmbChangeCategory.SelectedIndex = -1;
+                    categoryController.Update(podToChange.Category, selectedPodCategoryCmc, podToChange.Title);
+                    FillPodTable();
+                    cmbChangeCategory.SelectedIndex = -1;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void btnChangeName_Click(object sender, EventArgs e)
         {
-            if (listViewPods.SelectedItems.Count > 0)
+            try
             {
-                string newName = txtChangeName.Text;
-                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
-                if (!validationController.CheckIfStringIsEmpty(newName))
+                if (listViewPods.SelectedItems.Count > 0)
                 {
-                    categoryController.UpdateNameXml(podToChange.Name, newName, podToChange.Title);
-                    FillPodTable();
-                    txtChangeName.Clear();
-                    var confirmResult = MessageBox.Show("Namnet på den valda podden har ändrats!", "", MessageBoxButtons.OK);
+                    string newName = txtChangeName.Text;
+                    Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
+                    if (!validationController.CheckIfStringIsEmpty(newName))
+                    {
+                        categoryController.UpdateNameXml(podToChange.Name, newName, podToChange.Title);
+                        FillPodTable();
+                        txtChangeName.Clear();
+                        var confirmResult = MessageBox.Show("Namnet på den valda podden har ändrats!", "", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        var confirmResult = MessageBox.Show("Ett namn måste fyllas i!", "", MessageBoxButtons.OK);
+                    }
                 }
-                else
-                {
-                    var confirmResult = MessageBox.Show("Ett namn måste fyllas i!", "", MessageBoxButtons.OK);
-                }
+            }catch(Exception ex)
+            { 
+                Console.WriteLine(ex.Message); 
             }
 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (listViewPods.SelectedItems.Count > 0)
+            try
             {
+                if (listViewPods.SelectedItems.Count > 0)
+                {
 
-                Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
+                    Pod podToChange = podController.GetPodByPodTitle(selectedPodTitle);
 
 
-                podController.DeletePodXml(podToChange.Title);
-                FillPodTable();
-                listBoxEpisodes.Items.Clear();
-                txtBoxDescription.Clear();
+                    podController.DeletePodXml(podToChange.Title);
+                    FillPodTable();
+                    listBoxEpisodes.Items.Clear();
+                    txtBoxDescription.Clear();
 
+                }
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
