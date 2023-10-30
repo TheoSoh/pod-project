@@ -32,9 +32,10 @@ namespace PodProject
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            string newCategory = txtNewCategory.Text;
             try
             {
+                string newCategory = txtNewCategory.Text;
+           
                 if ((!validationController.CheckIfStringIsEmpty(newCategory)) && (!validationController.CheckIfCategoryExist(newCategory)))
 
                 {
@@ -57,10 +58,16 @@ namespace PodProject
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            string choosenCategory = cmbSelectCategory.SelectedItem.ToString();
-
             try
             {
+                string? choosenCategory = cmbSelectCategory.SelectedItem?.ToString();
+
+                if (validationController.CheckIfStringIsEmpty(choosenCategory))
+                {
+                    MessageBox.Show("Vänligen välj en kategori", "", MessageBoxButtons.OK);
+                    return;
+                }
+
                 var confirmResult = MessageBox.Show("Vill du verkligen radera denna kategori?", "", MessageBoxButtons.YesNo);
 
                 if (confirmResult == DialogResult.Yes)
@@ -101,11 +108,12 @@ namespace PodProject
         private void btnChangeNameCat_Click(object sender, EventArgs e)
 
         {
-            
-            string categoryName = cmbSelectCategory.SelectedItem.ToString();
-            string newCategoryName = txtNewNameCategory.Text;
+            try 
+            { 
+                string? categoryName = cmbSelectCategory.SelectedItem?.ToString();
+                string newCategoryName = txtNewNameCategory.Text;
 
-            try { 
+            
                 if ((!validationController.CheckIfStringIsEmpty(newCategoryName)) && (!validationController.CheckIfStringIsEmpty(categoryName)))
                 {
                 
@@ -121,10 +129,12 @@ namespace PodProject
                 {
                     var confirmResult = MessageBox.Show("Kategorin måste ha ett namn!", "", MessageBoxButtons.OK);
                 }
-                } catch (Exception ex)
-                 {
+
+            } 
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-                  }
+            }
 
         }
     }

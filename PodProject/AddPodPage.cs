@@ -40,25 +40,23 @@ namespace PodProject
 
         private async void btnAdd_Click(object sender, EventArgs e)
         {
-            string urlText = txtUrl.Text;
-            string nameText = txtName.Text;
+                string urlText = txtUrl.Text;
+                string nameText = txtName.Text;
 
-            validationController.CheckIfUrlIsCorrect(urlText);
+                if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
 
-            if ((!validationController.CheckIfStringIsEmpty(urlText)) && (!validationController.CheckIfStringIsEmpty(nameText)) && (!validationController.CheckIfUrlExist(urlText)) && (!validationController.CheckIfNameExist(nameText)))
+                {
+                    controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
+                    var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
+                    await Task.Delay(1000);
+                }
 
-            {
-                controller.CreatePod(txtUrl.Text, txtName.Text, cmbCategory.Text);
-                var confirmResult = MessageBox.Show("Ny podd har lagts till!", "", MessageBoxButtons.OK);
-                await Task.Delay(1000);
-            }
+                else
+                {
 
-             else 
-            {
+                    var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
 
-                var confirmResult = MessageBox.Show("Url och namn måste vara ifyllda & namn & podd finns redan!", "", MessageBoxButtons.OK);
-                
-            }
+                }
         }
     }
 }
