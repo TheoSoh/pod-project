@@ -47,9 +47,9 @@
             panel1.Controls.Add(header);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(5, 5, 5, 5);
+            panel1.Margin = new Padding(6, 6, 6, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1477, 109);
+            panel1.Size = new Size(1920, 140);
             panel1.TabIndex = 0;
             // 
             // header
@@ -57,10 +57,10 @@
             header.Anchor = AnchorStyles.Top;
             header.AutoSize = true;
             header.Font = new Font("Segoe UI", 28.25F, FontStyle.Regular, GraphicsUnit.Point);
-            header.Location = new Point(625, 15);
-            header.Margin = new Padding(5, 0, 5, 0);
+            header.Location = new Point(812, 19);
+            header.Margin = new Padding(6, 0, 6, 0);
             header.Name = "header";
-            header.Size = new Size(204, 76);
+            header.Size = new Size(272, 101);
             header.TabIndex = 0;
             header.Text = "PodLib";
             // 
@@ -71,19 +71,19 @@
             menuPanel.Controls.Add(btnAddPod);
             menuPanel.Controls.Add(btnLibrary);
             menuPanel.Dock = DockStyle.Left;
-            menuPanel.Location = new Point(0, 109);
-            menuPanel.Margin = new Padding(5, 5, 5, 5);
+            menuPanel.Location = new Point(0, 140);
+            menuPanel.Margin = new Padding(6, 6, 6, 6);
             menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(162, 818);
+            menuPanel.Size = new Size(211, 1047);
             menuPanel.TabIndex = 1;
             // 
             // btnManageCategories
             // 
             btnManageCategories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnManageCategories.Location = new Point(0, 222);
-            btnManageCategories.Margin = new Padding(5, 5, 5, 5);
+            btnManageCategories.Location = new Point(0, 284);
+            btnManageCategories.Margin = new Padding(6, 6, 6, 6);
             btnManageCategories.Name = "btnManageCategories";
-            btnManageCategories.Size = new Size(162, 88);
+            btnManageCategories.Size = new Size(211, 113);
             btnManageCategories.TabIndex = 2;
             btnManageCategories.Text = "Hantera kategorier";
             btnManageCategories.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // btnAddPod
             // 
             btnAddPod.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddPod.Location = new Point(0, 125);
-            btnAddPod.Margin = new Padding(5, 5, 5, 5);
+            btnAddPod.Location = new Point(0, 160);
+            btnAddPod.Margin = new Padding(6, 6, 6, 6);
             btnAddPod.Name = "btnAddPod";
-            btnAddPod.Size = new Size(162, 72);
+            btnAddPod.Size = new Size(211, 92);
             btnAddPod.TabIndex = 1;
             btnAddPod.Text = "Lägg till pod";
             btnAddPod.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // btnLibrary
             // 
             btnLibrary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLibrary.Location = new Point(0, 25);
-            btnLibrary.Margin = new Padding(5, 5, 5, 5);
+            btnLibrary.Location = new Point(0, 32);
+            btnLibrary.Margin = new Padding(6, 6, 6, 6);
             btnLibrary.Name = "btnLibrary";
-            btnLibrary.Size = new Size(162, 75);
+            btnLibrary.Size = new Size(211, 96);
             btnLibrary.TabIndex = 0;
             btnLibrary.Text = "Mina poddar";
             btnLibrary.UseVisualStyleBackColor = true;
@@ -118,10 +118,10 @@
             pagePanel.BackColor = SystemColors.InactiveCaption;
             pagePanel.Controls.Add(label1);
             pagePanel.Dock = DockStyle.Fill;
-            pagePanel.Location = new Point(162, 109);
-            pagePanel.Margin = new Padding(5, 5, 5, 5);
+            pagePanel.Location = new Point(211, 140);
+            pagePanel.Margin = new Padding(6, 6, 6, 6);
             pagePanel.Name = "pagePanel";
-            pagePanel.Size = new Size(1315, 818);
+            pagePanel.Size = new Size(1709, 1047);
             pagePanel.TabIndex = 2;
             // 
             // label1
@@ -129,21 +129,22 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.GradientInactiveCaption;
             label1.Font = new Font("Nirmala UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(308, 96);
+            label1.Location = new Point(400, 123);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(681, 360);
+            label1.Size = new Size(914, 472);
             label1.TabIndex = 0;
-            label1.Text = "PodLib är ett egendesignat pod\r\nbibliotek som är anpassat just för dig!\r\n\r\nLägg till dina favoritpoddar och \r\nordna efter egenvalda kategorier och namn,\r\n\r\n\r\nHoppas du får en bra upplevelse!";
+            label1.Text = "PodLib är ett egendesignat poddbibliotek\r\nanpassat just för dig!\r\n\r\nLägg till dina favoritpoddar och \r\nordna efter egenvalda kategorier och namn.\r\n\r\n\r\nHoppas du får en bra upplevelse!";
             // 
             // StartPage
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1477, 927);
+            ClientSize = new Size(1920, 1187);
             Controls.Add(pagePanel);
             Controls.Add(menuPanel);
             Controls.Add(panel1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "StartPage";
             Text = "StartPage";
             panel1.ResumeLayout(false);
